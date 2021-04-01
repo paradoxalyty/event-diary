@@ -1,7 +1,7 @@
 import React from 'react';
-
-import logo from '../assets/trees.png';
-import iconSmile from '../assets/smile-mouth-open.png';
+import './Header.css';
+import logo from '../../assets/trees.png';
+import iconSmile from '../../assets/smile-mouth-open.png';
 
 export const Header = () => {
   return (

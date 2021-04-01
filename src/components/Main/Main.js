@@ -1,8 +1,8 @@
 import React from 'react';
-import { useImages } from './useImages';
-import { Modal } from './Modal/Modal';
-
-import modalExample from '../assets/modal-example.jpg';
+import { useImages } from '../../Hooks/useImages';
+import { Modal } from '../Modal/Modal';
+import './Main.css';
+import modalExample from '../../assets/modal-example.jpg';
 
 export const Main = () => {
   const images = useImages();

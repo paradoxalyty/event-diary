@@ -1,0 +1,138 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fdfcf3;
+}
+
+.app-root {
+  width: 1440px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 1440px) {
+  .app-root {
+    width: 100vw;
+  }
+
+  .header {
+    padding: 30px 80px 20px 80px;
+  }
+
+  .nav {
+    justify-content: space-around;
+    order: 3;
+  }
+
+  .nav > .search {
+    width: 744px;
+  }
+
+  .nav > .smile-btn {
+    margin: 0;
+  }
+
+  .note {
+    width: 422px;
+    height: 364px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .nav {
+    justify-content: space-between;
+  }
+
+  .nav > .search {
+    width: 60vw;
+    height: 40px;
+  }
+
+  .nav > .smile-btn {
+    width: 80px;
+    height: 40px;
+  }
+
+  .smile-btn > img {
+    margin: 10px 0 0 15px;
+  }
+
+  .notes {
+    padding: 0 70px;
+  }
+
+  .note {
+    width: 300px;
+    height: 260px;
+  }
+
+  .info-description {
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
+
+@media only screen and (max-width: 740px) {
+  .header {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .logo-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-link > img {
+    width: 15px;
+    height: 19px;
+  }
+
+  .buttons-block {
+    display: flex;
+    justify-content: space-between;
+    width: 95vw;
+    margin-bottom: 30px;
+  }
+
+  .common-btn {
+    width: 135px;
+    height: 30px;
+    padding: 0;
+    font-size: 2px;
+    color: transparent;
+  }
+
+  .change-display-btn {
+    background-position: center;
+  }
+
+  .add-note-btn {
+    background-position: center;
+  }
+
+  .notes {
+    justify-content: center;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .nav > .search {
+    width: 190px;
+    height: 40px;
+  }
+
+  .note {
+    width: 278px;
+    height: 240px;
+  }
+}
