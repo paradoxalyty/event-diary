@@ -1,0 +1,8 @@
+.newNoteForm {
+  display: flex;
+  padding: 40px;
+}
+
+.newNoteData {
+  display: flex;
+}
