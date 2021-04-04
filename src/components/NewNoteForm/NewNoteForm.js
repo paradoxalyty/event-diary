@@ -1,106 +1,152 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { Select } from '../Select/Select';
+import { useImages } from '../../Hooks/useImages';
+import { useFormData } from '../../Hooks/useFormData';
 
 import './NewNoteForm.css';
 
-export class NewNoteForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      emoji: '',
-      date: '',
-      description: '',
-    };
-  }
+export const NewNoteForm = () => {
+  const formData = useFormData();
 
-  handleSubmit = (event) => {
+  const today = new Date().toISOString().substr(0, 10).toString();
+  const images = useImages();
+
+  const [name, setName] = useState('');
+  const [mood, setMood] = useState('');
+  const [date, setDate] = useState(today);
+  const [description, setDescription] = useState('');
+  const [imgUrl, setImgUrl] = useState('');
+
+  const STATE = [name, mood, date, description, imgUrl];
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('form is submited', this.state);
+    console.log(`form is submited ${name} ${mood} ${date} ${description}`);
   };
 
-  handleChange = (event) => {
+  const handleChange = (event) => {
     event.preventDefault();
-    // const value =
-    //   event.target.type === 'select-one'
-    //     ? console.log(event.target)
-    //     : event.target.value;
-    const value = event.target.value;
-    const name = event.target.name;
-    this.setState({
-      [name]: value,
-    });
+    const itemValue = event.target.value;
+    const itemName = event.target.name;
+
+    switch (itemName) {
+      case 'name':
+        setName(itemValue.trimStart());
+        break;
+      case 'mood':
+        setMood(itemValue);
+        break;
+      case 'date':
+        setDate(itemValue);
+        break;
+      case 'description':
+        setDescription(itemValue.trimStart());
+        break;
+      default:
+      // ignore default
+    }
   };
 
-  handleClearForm = (event) => {
+  const handleClick = (event) => {
+    const src = event.target.src;
+    setImgUrl(src);
+  };
+
+  const handleClearForm = (event) => {
     event.preventDefault();
-    this.setState({
-      name: '',
-      emoji: '',
-      date: '',
-      description: '',
-    });
+
+    setName('');
+    setMood('');
+    setDate(today);
+    setDescription('');
+    setImgUrl('');
 
     setTimeout(() => {
-      console.log('form is cleared', this.state);
+      // console.log(`form is cleared  ${name} ${mood} ${date} ${description} ${imgUrl}`);
+      console.log(`form is cleared`);
     }, 1000);
   };
 
-  render() {
-    const EMOJIES = [
-      '😵️',
-      '🙃',
-      '😑',
-      '🤔',
-      '🤤',
-      '😇',
-      '🤤',
-      '😰',
-      '😌',
-      '😆',
-      '😀',
-    ];
+  return (
+    <div className='forms-wrapper'>
+      <form className='new-note-form' onSubmit={handleSubmit}>
+        <input
+          className='new-note-name common-stiles placeholder'
+          type='text'
+          name='name'
+          value={name}
+          placeholder='Name'
+          onChange={handleChange}
+        />
 
-    return (
-      <form className='newNoteForm' onSubmit={this.handleSubmit}>
-        <div className='newNoteData'>
-          <input
-            type='text'
-            name='name'
-            value={this.state.name}
-            placeholder='name'
-            onChange={this.handleChange}
-          />
-          <select name='emoji' onChange={this.handleChange}>
-            {EMOJIES.map((emoji, index) => (
-              <option key={index} name={index} value={emoji} className={index}>
-                {emoji}
-              </option>
-            ))}
-          </select>
-          <input
-            type='date'
-            name='date'
-            value={this.state.date}
-            onChange={this.handleChange}
-          />
-          <input
-            type='text'
-            name='description'
-            value={this.state.description}
-            placeholder='description'
-            onChange={this.handleChange}
-          />
-          <button>Save</button>
-          <button type='button' onClick={this.handleClearForm}>
-            Clear
+        <Select handleChange={handleChange} />
+
+        <input
+          className='new-note-date common-stiles'
+          type='date'
+          name='date'
+          value={date}
+          onChange={handleChange}
+        />
+
+        <textarea
+          className='new-note-description placeholder'
+          type='text'
+          name='description'
+          value={description}
+          placeholder='Description'
+          onChange={handleChange}
+        />
+
+        <div className='form-btn-wrapper'>
+          <button
+            className='common-btn clear-form-btn'
+            type='button'
+            onClick={handleClearForm}
+          >
+            clear form
           </button>
+
+          <button className='common-btn save-note-btn'>save</button>
         </div>
-        <div>
-          <input type='text' />
-          <button></button>
-          <div></div>
+
+        <div className='state'>
+          <p onChange={console.log('changed')}>{formData.count}</p>
+          <button type='button' onClick={formData.handleCount}>
+            Click me
+          </button>
+          {STATE.map((item, index) => (
+            <p key={index}>{item} </p>
+          ))}
         </div>
       </form>
-    );
-  }
-}
+
+      <form className='search-form'>
+        <input
+          className='new-note-search common-stiles placeholder'
+          type='text'
+          name='search'
+          // value=''
+          placeholder='Search'
+        />
+
+        <button className='search-btn'></button>
+
+        <div className='new-note-photos'>
+          {images.data.map((image) => (
+            <div className='new-note-photo-wrapper' key={image.id}>
+              <img
+                src={image.src.medium}
+                className='new-note-photo'
+                width='100%'
+                height='100%'
+                alt={`Provided by Pexels, photographer - ${image.photographer}`}
+                onClick={handleClick}
+              />
+            </div>
+          ))}
+        </div>
+      </form>
+    </div>
+  );
+};

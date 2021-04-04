@@ -89,12 +89,12 @@ h1 {
 
 .change-display-btn {
   color: #1e2022;
-  background: #ffce89 no-repeat 32% 50% url('./assets/display-grid.png');
+  background: #ffce89 no-repeat 32% 50% url('./assets/display-notes.png');
 }
 
 .add-note-btn {
   color: #ffffff;
-  background: no-repeat 20% 50% url('./assets/pen.png'),
+  background: no-repeat 20% 50% url('./assets/add-note.png'),
     linear-gradient(135deg, #61b15a 0%, #adce74 100%);
 }
 

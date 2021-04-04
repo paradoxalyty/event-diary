@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useImages } from '../../Hooks/useImages';
+import { Select } from '../Select/Select';
 import { Modal } from '../Modal/Modal';
 
 import './Notes.css';
 import logo from '../../assets/trees.png';
-import iconSmile from '../../assets/smile-mouth-open.png';
 import modalExample from '../../assets/modal-example.jpg';
 
 export const Notes = () => {
@@ -35,19 +35,18 @@ export const Notes = () => {
 
       <div className='nav'>
         <input className='search' placeholder='Поиск'></input>
-        <a className='smile-btn'>
-          <img src={iconSmile} alt='icon-smile' />
-        </a>
+        <Select />
       </div>
 
       <div className='notes'>
+        ()
         {images.data.map((image) => (
           <div key={image.id} className='note' onClick={openModal}>
             <img
               src={image.src.medium}
               className='note-img'
               width='100%'
-              height='auto'
+              height='100%'
               alt={`Provided by Pexels, photographer - ${image.photographer}`}
             />
             <div className='info-box'>
@@ -59,7 +58,6 @@ export const Notes = () => {
             </div>
           </div>
         ))}
-
         <Modal ref={modalRef}>
           <div className='modal-box-heading'>
             <span className='modal-titel'>Visited the mountains</span>
