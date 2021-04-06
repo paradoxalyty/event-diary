@@ -126,10 +126,14 @@
 }
 
 .info-description {
+  flex-basis: 100%;
   margin: 0;
   font-family: Roboto;
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
   line-height: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

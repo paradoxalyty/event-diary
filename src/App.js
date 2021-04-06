@@ -15,7 +15,7 @@ export class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route history={history} path='/notes' component={Notes} />
-          <Route history={history} path='/add-note' component={NewNote} />
+          <Route history={history} path='/new-note' component={NewNote} />
           <Redirect from='/' to='/notes' />
         </Switch>
       </BrowserRouter>

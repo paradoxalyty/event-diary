@@ -1,4 +1,6 @@
 * {
+  margin: 0;
+  padding: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -24,9 +26,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
   padding: 30px 40px 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  background-color: #fdfcf3;
 }
 
 .logo-block {
@@ -62,11 +62,8 @@ h1 {
   color: #1e2022;
 }
 
-.buttons-block {
-  display: flex;
-}
-
-.common-btn {
+.btn {
+  display: block;
   width: 166px;
   height: 40px;
   padding-left: 40px;
@@ -81,10 +78,14 @@ h1 {
   text-align: center;
   text-transform: capitalize;
   text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.common-btn:focus {
-  outline: none;
+.btn:active {
+  color: #fff76a;
+  transform: scale(0.9);
 }
 
 .change-display-btn {
@@ -187,7 +188,7 @@ h1 {
     margin-bottom: 30px;
   }
 
-  .common-btn {
+  .btn {
     width: 135px;
     height: 30px;
     padding: 0;

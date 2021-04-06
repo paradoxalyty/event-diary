@@ -1,0 +1,168 @@
+.forms-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px;
+}
+
+.new-note-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 49%;
+}
+
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 49%;
+  justify-content: space-between;
+}
+
+.common-styles {
+  margin-bottom: 16px;
+  height: 60px;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  background: #fff;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+  color: #acacac;
+}
+
+.placeholder::-webkit-input-placeholder {
+  /* Edge */
+  color: #acacac;
+}
+
+.placeholder:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #acacac;
+}
+
+.placeholder::placeholder {
+  color: #acacac;
+}
+
+.new-note-name {
+  flex-basis: 100%;
+}
+
+.new-note-select {
+  position: relative;
+  width: 100px;
+  height: 60px;
+  margin: 0 16px 16px 0;
+  border: none;
+  border-radius: 12px;
+  padding-left: 16px;
+  background: #ffffff no-repeat 80% 50% url('../../assets/chevron-down.png');
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 60px;
+  cursor: pointer;
+}
+
+/* .new-note-select::before {
+  position: absolute;
+  top: 10px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  content: '';
+  background-color: red;
+  color: red;
+} */
+
+.new-note-date {
+  width: 210px;
+  color: #acacac;
+}
+
+.new-note-description {
+  flex-basis: 100%;
+  min-height: 478px;
+  margin-bottom: 16px;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  background: #ffffff;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+  color: #acacac;
+}
+
+.form-btn-wrapper {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.clear-form-btn {
+  color: #1e2022;
+  background: #ffce89 no-repeat 15% 50% url('../../assets/clear-form.png');
+}
+
+.save-note-btn {
+  color: #ffffff;
+  background: no-repeat 20% 50% url('../../assets/save-note.png'),
+    linear-gradient(135deg, #61b15a 0%, #adce74 100%);
+}
+
+.selected-photo-wrapper {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.selected-photo {
+  flex-basis: 40%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.new-note-search {
+  width: 590px;
+}
+
+.search-btn {
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  background: #fff76a no-repeat 50% 50% url('../../assets/search-btn.png');
+  border: none;
+  border-radius: 12px;
+}
+
+.new-note-photos {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  justify-content: space-between;
+}
+
+.new-note-photo-wrapper {
+  flex-basis: 49%;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.new-note-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

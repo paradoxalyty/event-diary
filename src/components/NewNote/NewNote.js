@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { NewNoteForm } from '../NewNoteForm/NewNoteForm';
+import { FormContextProvider } from '../../contexts/FormContext';
+import { AddNoteForm } from '../NoteForms/AddNoteForm';
+import { AddPhotoForm } from '../NoteForms/AddPhotoForm';
 
 import './NewNote.css';
 import logo from '../../assets/trees.png';
@@ -15,13 +17,17 @@ export const NewNote = () => {
           </div>
           <h1>Diary</h1>
         </Link>
-        <div className='buttons-block'>
-          <Link to='/notes' className='common-btn change-display-btn'>
-            Notes
-          </Link>
-        </div>
+        <Link to='/notes' className='btn change-display-btn'>
+          Notes
+        </Link>
       </header>
-      <NewNoteForm />
+
+      <div className='forms-wrapper'>
+        <FormContextProvider>
+          <AddNoteForm />
+          <AddPhotoForm />
+        </FormContextProvider>
+      </div>
     </>
   );
 };
