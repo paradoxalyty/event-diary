@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
-import { API_KEY, API_URL } from '../api/api';
+import { usePhotoSearch } from '../hooks/usePhotoSearch';
+import { API_KEY } from '../api/api';
 
 export const GetImages = () => {
   const [data, setData] = useState([]);
+  const { API_URL } = usePhotoSearch();
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -25,7 +27,7 @@ export const GetImages = () => {
     };
 
     setImages();
-  }, []);
+  }, [API_URL]);
 
   return { data };
 };

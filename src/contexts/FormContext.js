@@ -13,6 +13,8 @@ export const FormContextProvider = (props) => {
   const [imgUrl, setImgUrl] = useState('');
   const [imgAuthor, setImgAuthor] = useState('');
   const [itemId, setItemId] = useState('');
+  const [searchValue, setSearchValue] = useState('');
+  const [searchQuery, setSerachQuery] = useState('nature');
 
   const [notes, setNotes] = useState(localData ? JSON.parse(localData) : []);
 
@@ -28,6 +30,11 @@ export const FormContextProvider = (props) => {
     event.preventDefault();
     addNote(name, mood, date, description, imgUrl, imgAuthor, itemId);
     handleClearForm();
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    setSerachQuery(searchValue);
   };
 
   const handleChange = (event) => {
@@ -47,6 +54,9 @@ export const FormContextProvider = (props) => {
         break;
       case 'description':
         setDescription(itemValue.trimStart());
+        break;
+      case 'photo-search':
+        setSearchValue(itemValue.trimStart());
         break;
       default:
       // ignore default
@@ -77,6 +87,8 @@ export const FormContextProvider = (props) => {
         mood,
         date,
         description,
+        searchValue,
+        searchQuery,
         imgUrl,
         imgAuthor,
         itemId,
@@ -85,6 +97,7 @@ export const FormContextProvider = (props) => {
         setItemId,
         handleChange,
         handleSubmit,
+        handleSearchSubmit,
         handleClick,
         handleClearForm,
       }}

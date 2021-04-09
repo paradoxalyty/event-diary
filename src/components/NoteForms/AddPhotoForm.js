@@ -4,16 +4,19 @@ import { GetImages } from '../../containers/GetImages';
 
 export const AddPhotoForm = () => {
   const images = GetImages();
-  const { handleClick } = useContext(FormContext);
+  const { searchValue, handleSearchSubmit, handleChange, handleClick } = useContext(
+    FormContext
+  );
 
   return (
-    <form className='search-form'>
+    <form className='search-form' onSubmit={handleSearchSubmit}>
       <input
         className='new-note-search common-styles placeholder'
         type='text'
-        name='search'
-        // value=''
+        name='photo-search'
+        value={searchValue}
         placeholder='Search'
+        onChange={handleChange}
       />
 
       <button className='search-btn'></button>
