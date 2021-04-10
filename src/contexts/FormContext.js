@@ -22,13 +22,20 @@ export const FormContextProvider = (props) => {
     localStorage.setItem('notes', JSON.stringify(notes));
   }, [notes]);
 
-  const addNote = (name, mood, date, description, imgUrl, imgAuthor, itemId) => {
-    setNotes([...notes, { name, mood, date, description, imgUrl, imgAuthor, itemId }]);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    addNote(name, mood, date, description, imgUrl, imgAuthor, itemId);
+
+    const newNote = {
+      name,
+      mood,
+      date,
+      description,
+      imgUrl,
+      imgAuthor,
+      itemId,
+    };
+    setNotes([...notes, newNote]);
+
     handleClearForm();
   };
 
