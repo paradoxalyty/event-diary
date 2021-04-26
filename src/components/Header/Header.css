@@ -1,0 +1,62 @@
+.header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: -1px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 30px 40px 0;
+  background-color: #fdfcf3;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+
+.logo-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  margin-right: 18px;
+  background: radial-gradient(
+    100% 100% at 0% 0%,
+    #adce74 25%,
+    #fff76a 71.88%,
+    #ffce89 100%
+  );
+}
+
+h1 {
+  margin: 0;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 42px;
+  color: #1e2022;
+}
+
+.header-btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.change-display-btn {
+  margin-right: 14px;
+  color: #1e2022;
+  background: #ffce89 no-repeat 32% 50% url('../../assets/display-notes.png');
+}
+
+.add-note-btn {
+  color: #ffffff;
+  background: no-repeat 20% 50% url('../../assets/add-note.png'),
+    linear-gradient(135deg, #61b15a 0%, #adce74 100%);
+}

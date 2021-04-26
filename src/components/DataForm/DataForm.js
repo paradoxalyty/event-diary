@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import { Select } from '../Select/Select';
-import { FormContext } from '../../contexts/FormContext';
+import React from 'react';
+import Select from '../Select/Select';
+import { NEW_NAME, NEW_DATE, NEW_DESCRIPTION, CLEAR_FORM } from '../../redux/types';
 
-export const AddNoteForm = () => {
+const DataForm = (props) => {
   const {
     name,
     date,
@@ -10,35 +10,35 @@ export const AddNoteForm = () => {
     imgUrl,
     imgAuthor,
     handleChange,
-    handleSubmit,
-    handleClearForm,
-  } = useContext(FormContext);
+    handleFormSubmit,
+  } = props;
 
   return (
-    <form className='new-note-form' onSubmit={handleSubmit}>
+    <form className='new-note-form' onSubmit={handleFormSubmit}>
       <input
-        className='new-note-name common-styles placeholder'
+        className='new-note-name input-common-styles'
         type='text'
-        name='name'
+        name={NEW_NAME}
         value={name}
         placeholder='Name'
         onChange={handleChange}
+        autoComplete='off'
       />
 
       <Select handleChange={handleChange} />
 
       <input
-        className='new-note-date common-styles'
+        className='new-note-date input-common-styles'
         type='date'
-        name='date'
+        name={NEW_DATE}
         value={date}
         onChange={handleChange}
       />
 
       <textarea
-        className='new-note-description placeholder'
+        className='new-note-description input-common-styles'
         type='text'
-        name='description'
+        name={NEW_DESCRIPTION}
         value={description}
         placeholder='Description'
         onChange={handleChange}
@@ -46,26 +46,28 @@ export const AddNoteForm = () => {
 
       <div className='form-btn-wrapper'>
         <button
-          className='btn clear-form-btn'
+          className='btn-common-styles clear-form-btn'
           type='button'
-          onClick={handleClearForm}
+          name={CLEAR_FORM}
+          onClick={handleChange}
         >
           clear form
         </button>
 
-        <button className='btn save-note-btn' onClick={handleSubmit}>
+        <button className='btn-common-styles save-note-btn' onClick={handleFormSubmit}>
           save
         </button>
       </div>
-      {imgUrl ? (
+
+      {imgUrl && (
         <div className='selected-photo-wrapper'>
           <div className='selected-photo'>
             <img className='new-note-photo' src={imgUrl} alt={imgAuthor} />
           </div>
         </div>
-      ) : (
-        <></>
       )}
     </form>
   );
 };
+
+export default DataForm;
