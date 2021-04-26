@@ -1,24 +1,31 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import { Notes } from './components/Notes/Notes';
-import { NewNote } from './components/NewNote/NewNote';
+import Main from './Pages/Main/Main';
+import NewNote from './Pages/NewNote/NewNote';
 import './App.css';
 
-export class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+class App extends Component {
   render() {
     const { history } = this.props;
     return (
       <BrowserRouter>
         <Switch>
-          <Route history={history} path='/notes' component={Notes} />
           <Route history={history} path='/new-note' component={NewNote} />
-          <Redirect from='/' to='/notes' />
+          <Route history={history} path='/' component={Main} />
         </Switch>
       </BrowserRouter>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return { history: state.history };
+};
+
+const mapDispatchToProps = () => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

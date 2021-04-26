@@ -1,18 +1,30 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { NEW_MOOD } from '../../redux/types';
 
-export const Select = (prop) => {
-  const moods = ['😵️', '🙃', '😑', '🤔', '🤤', '😇', '🤤', '😰', '😌', '😆', '😀'];
+const Select = (props) => {
+  const moods = ['🌚', '😵️', '🙃', '😑', '🤔', '🤤', '😇', '🤤', '😰', '😌', '😆', '😀'];
 
-  const handleChange = prop.handleChange;
+  const handleChange = props.handleChange;
 
   return (
-    <select className='new-note-select' name='mood' onChange={handleChange}>
-      <option>&#9786;</option>
+    <select
+      className='new-note-select'
+      name={NEW_MOOD}
+      defaultValue={props.mood}
+      onChange={handleChange}
+    >
       {moods.map((mood, index) => (
-        <option key={index} name='mood' value={mood} className='mood'>
+        <option key={index} name={NEW_MOOD} value={mood} className='mood'>
           {mood}
         </option>
       ))}
     </select>
   );
 };
+
+const mapStateToProps = (state) => {
+  return { mood: state.newData.mood };
+};
+
+export default connect(mapStateToProps)(Select);
