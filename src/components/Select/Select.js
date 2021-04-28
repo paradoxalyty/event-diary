@@ -9,7 +9,7 @@ const Select = (props) => {
 
   return (
     <select
-      className='new-note-select'
+      className='select'
       name={NEW_MOOD}
       defaultValue={props.mood}
       onChange={handleChange}
