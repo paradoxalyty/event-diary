@@ -30,11 +30,23 @@
   cursor: pointer;
 }
 
-.note > img {
+.note-img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.note-mood {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  line-height: 40px;
 }
 
 .info-box {

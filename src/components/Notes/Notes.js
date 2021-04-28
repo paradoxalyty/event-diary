@@ -29,6 +29,9 @@ const Notes = ({ notes, loadFromLocalStorage }) => {
               height='100%'
               alt={note.imgAuthor}
             />
+
+            <div className='note-mood'>{note.mood}</div>
+
             <div className='info-box'>
               <span className='info-titel'>{note.name}</span>
               <span className='info-date'>{note.date}</span>
