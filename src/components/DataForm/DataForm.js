@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from '../Select/Select';
-import { NEW_NAME, NEW_DATE, NEW_DESCRIPTION, CLEAR_FORM } from '../../redux/types';
+import { NEW_NAME, NEW_DATE, NEW_DESCRIPTION, CLEAR_FORM } from '../../redux/constants';
 
 const DataForm = (props) => {
   const {

@@ -7,7 +7,7 @@ import {
   NEW_IMG_AUTHOR,
   NEW_IMG_ID,
   CLEAR_FORM,
-} from '../redux/types';
+} from './constants';
 
 const today = new Date().toISOString().substr(0, 10).toString();
 

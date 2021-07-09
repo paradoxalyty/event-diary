@@ -1,4 +1,4 @@
-import { LOAD_LOCAL_DATA, SAVE_LOCAL_DATA } from './types';
+import { LOAD_LOCAL_DATA, SAVE_LOCAL_DATA } from './constants';
 
 const initialState = {
   notes: [],

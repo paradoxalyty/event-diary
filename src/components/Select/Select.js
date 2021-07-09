@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NEW_MOOD } from '../../redux/types';
+import { NEW_MOOD } from '../../redux/constants';
 
 const Select = (props) => {
   const moods = ['🌚', '😵️', '🙃', '😑', '🤔', '🤤', '😇', '🤤', '😰', '😌', '😆', '😀'];

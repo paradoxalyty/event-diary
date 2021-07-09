@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Loader } from '../Loader/Loader';
 
 import { fetchImages, loadFromLocalStorage } from '../../redux/actions';
-import { NEW_SEARCH_VALUE } from '../../redux/types';
+import { NEW_SEARCH_VALUE } from '../../redux/constants';
 
 import FetchedImages from '../FetchedImages/FetchedImages';
 

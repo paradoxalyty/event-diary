@@ -2,7 +2,7 @@ import {
   FETCH_IMAGES_STARTED,
   FETCH_IMAGES_SUCCESS,
   FETCH_IMAGES_FAILURE,
-} from '../redux/types';
+} from './constants';
 
 const initialState = {
   fetchedImages: [],

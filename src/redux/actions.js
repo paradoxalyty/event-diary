@@ -14,7 +14,7 @@ import {
   FETCH_IMAGES_FAILURE,
   LOAD_LOCAL_DATA,
   SAVE_LOCAL_DATA,
-} from './types';
+} from './constants';
 
 export const addNewName = (newValue) => {
   return { type: NEW_NAME, name: newValue };
