@@ -111,3 +111,7 @@ export const loadFromLocalStorage = () => {
 export const saveToLocalStorage = (newNote) => {
   return { type: SAVE_LOCAL_DATA, payload: newNote };
 };
+
+export const filterNotes = (payload) => {
+  return { type: 'FILTER_LOCAL_DATA', payload };
+};

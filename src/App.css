@@ -56,10 +56,11 @@ body {
   line-height: 21px;
   color: #acacac;
 }
-/* 
+
 .input-common-styles:focus {
   outline: none;
-} */
+  border: #ffce89 solid 1px;
+}
 
 .input-common-styles::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */

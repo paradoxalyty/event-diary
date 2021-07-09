@@ -42,6 +42,11 @@
   cursor: pointer;
 }
 
+.select:focus {
+  outline: none;
+  border: #ffce89 solid 1px;
+}
+
 .new-note-date {
   width: 210px;
   color: #acacac;

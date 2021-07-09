@@ -2,14 +2,17 @@ import { LOAD_LOCAL_DATA, SAVE_LOCAL_DATA } from './types';
 
 const initialState = {
   notes: [],
-  // loadLocalData: false,
+  filteredNotes: [],
 };
 
 export const localDataReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_LOCAL_DATA:
       return { ...state, notes: action.payload.notes };
-    // loadLocalData: true
+
+    case 'FILTER_LOCAL_DATA':
+      console.log(action);
+      return { ...state, filteredNotes: action.payload };
 
     case SAVE_LOCAL_DATA:
       const serialisedState = JSON.stringify({

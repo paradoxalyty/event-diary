@@ -4,17 +4,19 @@ import { Modal } from '../Modal/Modal';
 
 import { loadFromLocalStorage } from '../../redux/actions';
 
-const Notes = ({ notes, loadFromLocalStorage }) => {
+const Notes = ({ localNotes, filteredNotes, loadFromLocalStorage }) => {
   const modalRef = React.useRef();
   const openModal = () => {
     modalRef.current.openModal();
   };
 
   useEffect(() => {
-    if (notes.length === 0) {
+    if (localNotes.length === 0) {
       loadFromLocalStorage();
     }
-  }, [notes.length, loadFromLocalStorage]);
+  }, [localNotes.length, loadFromLocalStorage]);
+
+  const notes = filteredNotes.length ? filteredNotes : localNotes;
 
   return (
     <div className='notes'>
@@ -50,7 +52,8 @@ const Notes = ({ notes, loadFromLocalStorage }) => {
 
 const mapStateToProps = (state) => {
   return {
-    notes: state.localData.notes,
+    localNotes: state.localData.notes,
+    filteredNotes: state.localData.filteredNotes,
   };
 };
 
