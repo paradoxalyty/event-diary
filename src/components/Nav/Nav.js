@@ -1,14 +1,38 @@
-import Select from '../Select/Select';
+import { connect } from 'react-redux';
+import NavSelect from '../NavSelect/NavSelect';
 
-export const Nav = () => {
+import { addFilterName } from '../../redux/actions';
+
+const Nav = ({ addFilterName, filterName }) => {
+  const handleChangeFilter = (event) => {
+    addFilterName(event.target.value);
+  };
+
   return (
     <div className='nav'>
       <input
         className='search input-common-styles'
+        name='searchByName'
+        value={filterName}
         placeholder='Search'
+        onChange={handleChangeFilter}
         autoComplete='off'
       ></input>
-      <Select />
+      <NavSelect />
     </div>
   );
 };
+
+const mapStateToProps = (state) => {
+  return { filterName: state.filterNotes.filterName };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addFilterName: (value) => {
+      dispatch(addFilterName(value));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

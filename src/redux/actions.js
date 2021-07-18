@@ -14,7 +14,9 @@ import {
   FETCH_IMAGES_FAILURE,
   LOAD_LOCAL_DATA,
   SAVE_LOCAL_DATA,
-} from './types';
+  ADD_FILTER_NAME,
+  ADD_FILTER_MOOD,
+} from './constants';
 
 export const addNewName = (newValue) => {
   return { type: NEW_NAME, name: newValue };
@@ -108,6 +110,14 @@ export const loadFromLocalStorage = () => {
   };
 };
 
-export const saveToLocalStorage = (newNote) => {
-  return { type: SAVE_LOCAL_DATA, payload: newNote };
+export const saveToLocalStorage = (payload) => {
+  return { type: SAVE_LOCAL_DATA, payload };
+};
+
+export const addFilterName = (payload) => {
+  return { type: ADD_FILTER_NAME, payload };
+};
+
+export const addFilterMood = (payload) => {
+  return { type: ADD_FILTER_MOOD, payload };
 };

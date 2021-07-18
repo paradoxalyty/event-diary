@@ -56,10 +56,11 @@ body {
   line-height: 21px;
   color: #acacac;
 }
-/* 
+
 .input-common-styles:focus {
   outline: none;
-} */
+  border: #ffce89 solid 1px;
+}
 
 .input-common-styles::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
@@ -88,7 +89,7 @@ body {
   }
 
   .header {
-    padding: 30px 80px 20px 80px;
+    padding: 30px 40px 20px 40px;
   }
 
   .nav {
@@ -100,29 +101,29 @@ body {
     width: 744px;
   }
 
-  .nav > .new-note-select {
+  .nav > .select {
     margin: 0;
+  }
+
+  .new-note-search {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .new-note-photos {
+    justify-content: center;
+  }
+
+  .new-note-photo-wrapper {
+    flex-basis: 70%;
   }
 }
 
 @media only screen and (max-width: 1024px) {
-  .header {
-    padding: 20px 30px;
-  }
   .nav {
     justify-content: space-between;
-  }
-
-  .nav > .search {
-    width: 60vw;
-    height: 40px;
-  }
-
-  .nav > .new-note-select {
-    width: 80px;
-    height: 40px;
-    font-size: 20px;
-    line-height: 42px;
+    padding: 0 80px 80px 80px;
   }
 
   .notes {
@@ -138,15 +139,53 @@ body {
     font-size: 12px;
     line-height: 14px;
   }
+
+  .forms-wrapper {
+    flex-wrap: wrap;
+  }
+
+  .new-note-form {
+    flex-basis: 100%;
+    justify-content: space-between;
+  }
+
+  .search-form {
+    flex-basis: 100%;
+  }
+
+  .new-note-name {
+    flex-basis: 56%;
+  }
+
+  .select {
+    margin: 0 0 16px 0;
+  }
 }
 
 @media only screen and (max-width: 740px) {
-  .header {
+  .header,
+  .forms-wrapper {
     padding: 20px;
   }
 
   .nav {
     padding: 0 20px 20px 20px;
+  }
+
+  .nav > .search {
+    width: 60vw;
+    height: 40px;
+  }
+
+  .select {
+    width: 80px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 42px;
+  }
+
+  .logo-wrapper {
+    margin-bottom: 12px;
   }
 
   h1 {
@@ -166,7 +205,6 @@ body {
 
   .header-btn-wrapper {
     width: 95vw;
-    margin-bottom: 30px;
   }
 
   .btn-common-styles {
@@ -189,12 +227,39 @@ body {
     justify-content: center;
     padding: 0;
   }
+
+  .new-note-name {
+    flex-basis: 100%;
+    height: 40px;
+  }
+
+  .new-note-date {
+    height: 40px;
+  }
+
+  .save-note-btn,
+  .clear-form-btn {
+    background-position: center;
+  }
+
+  .new-note-search {
+    width: 80%;
+    height: 40px;
+  }
+
+  .search-btn {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 @media only screen and (max-width: 340px) {
-  .nav > .search {
-    width: 190px;
-    height: 40px;
+  .header-btn-wrapper {
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    width: 82vw;
+    margin: 20px 20px 20px 10px;
   }
 
   .note {

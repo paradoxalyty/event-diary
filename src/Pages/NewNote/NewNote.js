@@ -17,7 +17,7 @@ import {
   NEW_IMG_ID,
   CLEAR_FORM,
   NEW_SEARCH_VALUE,
-} from '../../redux/types';
+} from '../../redux/constants';
 
 import { Header } from '../../components/Header/Header';
 import DataForm from '../../components/DataForm/DataForm';
