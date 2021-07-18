@@ -2,6 +2,7 @@ import {
   FETCH_IMAGES_STARTED,
   FETCH_IMAGES_SUCCESS,
   FETCH_IMAGES_FAILURE,
+  NEW_SEARCH_VALUE,
 } from './constants';
 
 const initialState = {
@@ -34,7 +35,7 @@ export const fetchImagesReducer = (state = initialState, action) => {
         loading: false,
         error: true,
       };
-    case 'NEW_SEARCH_VALUE':
+    case NEW_SEARCH_VALUE:
       console.log(action);
       return {
         ...state,

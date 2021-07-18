@@ -1,37 +1,36 @@
 import { connect } from 'react-redux';
-import Select from '../Select/Select';
+import NavSelect from '../NavSelect/NavSelect';
 
-import { filterNotes } from '../../redux/actions';
+import { addFilterName } from '../../redux/actions';
 
-const Nav = ({ notes, filterNotes }) => {
-  const handleChange = (event) => {
-    const filteredNotes = notes.filter((note) => {
-      return note.name.indexOf(event.target.value) !== -1;
-    });
-    filterNotes(filteredNotes);
+const Nav = ({ addFilterName, filterName }) => {
+  const handleChangeFilter = (event) => {
+    addFilterName(event.target.value);
   };
 
   return (
     <div className='nav'>
       <input
         className='search input-common-styles'
+        name='searchByName'
+        value={filterName}
         placeholder='Search'
-        onChange={handleChange}
+        onChange={handleChangeFilter}
         autoComplete='off'
       ></input>
-      <Select />
+      <NavSelect />
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
-  return { notes: state.localData.notes };
+  return { filterName: state.filterNotes.filterName };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    filterNotes: (value) => {
-      dispatch(filterNotes(value));
+    addFilterName: (value) => {
+      dispatch(addFilterName(value));
     },
   };
 };

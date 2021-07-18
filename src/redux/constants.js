@@ -1,3 +1,5 @@
+export const MOODS = ['😵️', '🙃', '😑', '🤔', '🤤', '😇', '🤤', '😰', '😌', '😆', '😀'];
+
 export const NEW_NAME = 'NEW_NAME';
 
 export const NEW_MOOD = 'NEW_MOOD';
@@ -28,6 +30,6 @@ export const LOAD_LOCAL_DATA = 'LOAD_LOCAL_DATA';
 
 export const SAVE_LOCAL_DATA = 'SAVE_LOCAL_DATA';
 
-// export const SHOW_LOADER = 'SHOW_LOADER';
+export const ADD_FILTER_NAME = 'ADD_FILTER_NAME';
 
-// export const HIDE_LOADER = 'HIDE_LOADER';
+export const ADD_FILTER_MOOD = 'ADD_FILTER_MOOD';
