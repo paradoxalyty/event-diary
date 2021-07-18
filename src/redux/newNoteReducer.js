@@ -13,7 +13,7 @@ const today = new Date().toISOString().substr(0, 10).toString();
 
 const initialState = {
   name: '',
-  mood: '🌚',
+  mood: '',
   date: today,
   description: '',
   imgUrl: '',
@@ -41,7 +41,7 @@ export const newDataReducer = (state = initialState, action) => {
       return {
         ...state,
         name: '',
-        mood: '🌚',
+        mood: '',
         date: today,
         description: '',
         imgUrl: '',

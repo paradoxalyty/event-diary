@@ -4,7 +4,7 @@ import { Modal } from '../Modal/Modal';
 
 import { loadFromLocalStorage } from '../../redux/actions';
 
-const Notes = ({ localNotes, filteredNotes, loadFromLocalStorage }) => {
+const Notes = ({ localNotes, filterName, filterMood, loadFromLocalStorage }) => {
   const modalRef = React.useRef();
   const openModal = () => {
     modalRef.current.openModal();
@@ -16,7 +16,19 @@ const Notes = ({ localNotes, filteredNotes, loadFromLocalStorage }) => {
     }
   }, [localNotes.length, loadFromLocalStorage]);
 
-  const notes = filteredNotes.length ? filteredNotes : localNotes;
+  const filteredNotes = localNotes
+    .filter((note) => note.name.toLowerCase().includes(filterName.toLowerCase()))
+    .filter((note) => note.mood.includes(filterMood));
+
+  let notes = [];
+
+  if ((filterName || filterMood) && filteredNotes.length) {
+    notes = filteredNotes;
+  }
+
+  if (filterName.length === 0 && filterMood.length === 0) {
+    notes = localNotes;
+  }
 
   return (
     <div className='notes'>
@@ -32,7 +44,7 @@ const Notes = ({ localNotes, filteredNotes, loadFromLocalStorage }) => {
               alt={note.imgAuthor}
             />
 
-            <div className='note-mood'>{note.mood}</div>
+            {note.mood ? <div className='note-mood'>{note.mood}</div> : ''}
 
             <div className='info-box'>
               <span className='info-titel'>{note.name}</span>
@@ -42,7 +54,7 @@ const Notes = ({ localNotes, filteredNotes, loadFromLocalStorage }) => {
           </div>
         ))
       ) : (
-        <div className='empty'>Diary is empty.</div>
+        <div className='empty'>Nothing is found.</div>
       )}
 
       <Modal ref={modalRef}></Modal>
@@ -53,7 +65,8 @@ const Notes = ({ localNotes, filteredNotes, loadFromLocalStorage }) => {
 const mapStateToProps = (state) => {
   return {
     localNotes: state.localData.notes,
-    filteredNotes: state.localData.filteredNotes,
+    filterName: state.filterNotes.filterName,
+    filterMood: state.filterNotes.filterMood,
   };
 };
 

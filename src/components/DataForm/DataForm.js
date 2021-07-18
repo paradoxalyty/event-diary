@@ -1,18 +1,16 @@
 import React from 'react';
-import Select from '../Select/Select';
+import DataFormSelect from '../DataFormSelect/DataFormSelect';
 import { NEW_NAME, NEW_DATE, NEW_DESCRIPTION, CLEAR_FORM } from '../../redux/constants';
 
-const DataForm = (props) => {
-  const {
-    name,
-    date,
-    description,
-    imgUrl,
-    imgAuthor,
-    handleChange,
-    handleFormSubmit,
-  } = props;
-
+const DataForm = ({
+  name,
+  date,
+  description,
+  imgUrl,
+  imgAuthor,
+  handleChange,
+  handleFormSubmit,
+}) => {
   return (
     <form className='new-note-form' onSubmit={handleFormSubmit}>
       <input
@@ -25,7 +23,7 @@ const DataForm = (props) => {
         autoComplete='off'
       />
 
-      <Select handleChange={handleChange} />
+      <DataFormSelect handleChange={handleChange} />
 
       <input
         className='new-note-date input-common-styles'
