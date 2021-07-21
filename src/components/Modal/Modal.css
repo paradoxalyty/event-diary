@@ -58,6 +58,11 @@
   margin-bottom: 39px;
 }
 
+.modal-box-heading > .modal-mood {
+  font-size: 48px;
+  line-height: 56px;
+}
+
 .modal-box-heading > .modal-titel {
   font-family: Roboto;
   font-style: normal;

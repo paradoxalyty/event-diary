@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Modal } from '../Modal/Modal';
+import Modal from '../Modal/Modal';
 
-import { loadFromLocalStorage } from '../../redux/actions';
+import { loadFromLocalStorage, openModal, addModalData } from '../../redux/actions';
 
-const Notes = ({ localNotes, filterName, filterMood, loadFromLocalStorage }) => {
-  const modalRef = React.useRef();
-  const openModal = () => {
-    modalRef.current.openModal();
-  };
-
+const Notes = ({
+  localNotes,
+  filterName,
+  filterMood,
+  loadFromLocalStorage,
+  openModal,
+  addModalData,
+}) => {
   useEffect(() => {
     if (localNotes.length === 0) {
       loadFromLocalStorage();
@@ -30,11 +32,40 @@ const Notes = ({ localNotes, filterName, filterMood, loadFromLocalStorage }) => 
     notes = localNotes;
   }
 
+  const handleClick = (event) => {
+    const currentMood = event.currentTarget.childNodes[1].innerText;
+    const currentName = event.currentTarget.lastChild.childNodes[0].innerText;
+    const currentDate = event.currentTarget.lastChild.childNodes[1].innerText;
+    const currentImgUrl = event.currentTarget.childNodes[0].src;
+    const currentImgAuthor = event.currentTarget.childNodes[0].alt;
+    const currentDescription = event.currentTarget.lastChild.childNodes[2].innerText;
+
+    addModalData({
+      modalMood: currentMood,
+      modalName: currentName,
+      modalDate: currentDate,
+      modalImgUrl: currentImgUrl,
+      modalImgAuthor: currentImgAuthor,
+      modalDescription: currentDescription,
+    });
+    openModal();
+  };
+
   return (
     <div className='notes'>
       {notes.length ? (
         notes.map((note, index) => (
-          <div key={index} className='note' onClick={openModal}>
+          <div
+            key={index}
+            className='note'
+            onClick={handleClick}
+            dataimgsrc={note.imgUrl}
+            dataimgalt={note.imgAuthor}
+            datamood={note.mood}
+            datainfotitel={note.name}
+            datainfodate={note.date}
+            datainfodescription={note.description}
+          >
             <img
               data-id={note.noteId}
               src={note.imgUrl}
@@ -57,7 +88,7 @@ const Notes = ({ localNotes, filterName, filterMood, loadFromLocalStorage }) => 
         <div className='empty'>Nothing is found.</div>
       )}
 
-      <Modal ref={modalRef}></Modal>
+      <Modal></Modal>
     </div>
   );
 };
@@ -74,6 +105,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     loadFromLocalStorage: () => {
       dispatch(loadFromLocalStorage());
+    },
+    openModal: () => {
+      dispatch(openModal());
+    },
+    addModalData: (payload) => {
+      dispatch(addModalData(payload));
     },
   };
 };
