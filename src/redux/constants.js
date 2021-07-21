@@ -33,3 +33,9 @@ export const SAVE_LOCAL_DATA = 'SAVE_LOCAL_DATA';
 export const ADD_FILTER_NAME = 'ADD_FILTER_NAME';
 
 export const ADD_FILTER_MOOD = 'ADD_FILTER_MOOD';
+
+export const OPEN_MODAL = 'OPEN_MODAL';
+
+export const CLOSE_MODAL = 'CLOSE_MODAL';
+
+export const ADD_MODAL_DATA = 'ADD_MODAL_DATA';

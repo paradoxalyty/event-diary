@@ -16,6 +16,9 @@ import {
   SAVE_LOCAL_DATA,
   ADD_FILTER_NAME,
   ADD_FILTER_MOOD,
+  OPEN_MODAL,
+  CLOSE_MODAL,
+  ADD_MODAL_DATA,
 } from './constants';
 
 export const addNewName = (newValue) => {
@@ -120,4 +123,16 @@ export const addFilterName = (payload) => {
 
 export const addFilterMood = (payload) => {
   return { type: ADD_FILTER_MOOD, payload };
+};
+
+export const openModal = () => {
+  return { type: OPEN_MODAL };
+};
+
+export const closeModal = () => {
+  return { type: CLOSE_MODAL };
+};
+
+export const addModalData = (payload) => {
+  return { type: ADD_MODAL_DATA, payload };
 };
