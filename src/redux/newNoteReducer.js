@@ -3,9 +3,7 @@ import {
   NEW_MOOD,
   NEW_DATE,
   NEW_DESCRIPTION,
-  NEW_IMG_URL,
-  NEW_IMG_AUTHOR,
-  NEW_IMG_ID,
+  NEW_IMG_DATA,
   CLEAR_FORM,
 } from './constants';
 
@@ -16,9 +14,12 @@ const initialState = {
   mood: '',
   date: today,
   description: '',
-  imgUrl: '',
-  imgAuthor: '',
-  imgId: '',
+  imgData: {
+    imgUrl: '',
+    imgAuthor: '',
+    imgId: '',
+    imgSrcLarge: '',
+  },
 };
 
 export const newDataReducer = (state = initialState, action) => {
@@ -31,12 +32,8 @@ export const newDataReducer = (state = initialState, action) => {
       return { ...state, date: action.newValue };
     case NEW_DESCRIPTION:
       return { ...state, description: action.newValue };
-    case NEW_IMG_URL:
-      return { ...state, imgUrl: action.newValue };
-    case NEW_IMG_AUTHOR:
-      return { ...state, imgAuthor: action.newValue };
-    case NEW_IMG_ID:
-      return { ...state, imgId: action.newValue };
+    case NEW_IMG_DATA:
+      return { ...state, imgData: action.payload };
     case CLEAR_FORM:
       return {
         ...state,
@@ -44,9 +41,12 @@ export const newDataReducer = (state = initialState, action) => {
         mood: '',
         date: today,
         description: '',
-        imgUrl: '',
-        imgAuthor: '',
-        imgId: '',
+        imgData: {
+          imgUrl: '',
+          imgAuthor: '',
+          imgId: '',
+          imgSrcLarge: '',
+        },
       };
     default:
       return state;

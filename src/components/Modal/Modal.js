@@ -5,7 +5,7 @@ import { closeModal } from '../../redux/actions';
 
 import './Modal.css';
 
-const TestModal = ({
+const Modal = ({
   isOpen,
   modalMood,
   modalName,
@@ -33,7 +33,9 @@ const TestModal = ({
             <span className='modal-date'>{modalDate}</span>
           </div>
           <div className='modal-box-main'>
-            <img src={modalImgUrl} className='modal-img' alt={modalImgAuthor} />
+            <div className='modal-img-wrapper'>
+              <img src={modalImgUrl} className='modal-img' alt={modalImgAuthor} />
+            </div>
             <p className='modal-description'>{modalDescription}</p>
           </div>
         </div>
@@ -65,4 +67,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TestModal);
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);

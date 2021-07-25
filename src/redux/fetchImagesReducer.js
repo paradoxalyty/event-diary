@@ -9,7 +9,7 @@ const initialState = {
   fetchedImages: [],
   loading: false,
   error: false,
-  searchQuery: 'nature',
+  searchQuery: 'landscape',
   searchValue: '',
 };
 
@@ -30,13 +30,11 @@ export const fetchImagesReducer = (state = initialState, action) => {
         error: false,
       };
     case FETCH_IMAGES_FAILURE:
-      console.log(action.payload);
       return {
         loading: false,
         error: true,
       };
     case NEW_SEARCH_VALUE:
-      console.log(action);
       return {
         ...state,
         searchValue: action.payload,

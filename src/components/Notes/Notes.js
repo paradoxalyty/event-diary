@@ -22,11 +22,10 @@ const Notes = ({
     .filter((note) => note.name.toLowerCase().includes(filterName.toLowerCase()))
     .filter((note) => note.mood.includes(filterMood));
 
-  let notes = [];
-
-  if ((filterName || filterMood) && filteredNotes.length) {
+  let notes = filteredNotes;
+  /*if ((filterName || filterMood) && filteredNotes.length) {
     notes = filteredNotes;
-  }
+  }*/
 
   if (filterName.length === 0 && filterMood.length === 0) {
     notes = localNotes;
@@ -36,7 +35,7 @@ const Notes = ({
     const currentMood = event.currentTarget.childNodes[1].innerText;
     const currentName = event.currentTarget.lastChild.childNodes[0].innerText;
     const currentDate = event.currentTarget.lastChild.childNodes[1].innerText;
-    const currentImgUrl = event.currentTarget.childNodes[0].src;
+    const currentImgUrl = event.currentTarget.childNodes[0].dataset.srclarge;
     const currentImgAuthor = event.currentTarget.childNodes[0].alt;
     const currentDescription = event.currentTarget.lastChild.childNodes[2].innerText;
 
@@ -55,24 +54,14 @@ const Notes = ({
     <div className='notes'>
       {notes.length ? (
         notes.map((note, index) => (
-          <div
-            key={index}
-            className='note'
-            onClick={handleClick}
-            dataimgsrc={note.imgUrl}
-            dataimgalt={note.imgAuthor}
-            datamood={note.mood}
-            datainfotitel={note.name}
-            datainfodate={note.date}
-            datainfodescription={note.description}
-          >
+          <div key={note.imgData.itemId + index} className='note' onClick={handleClick}>
             <img
-              data-id={note.noteId}
-              src={note.imgUrl}
               className='note-img'
               width='100%'
               height='100%'
-              alt={note.imgAuthor}
+              alt={note.imgData.imgAuthor}
+              src={note.imgData.imgUrl}
+              data-srclarge={note.imgData.imgSrcLarge}
             />
 
             {note.mood ? <div className='note-mood'>{note.mood}</div> : ''}

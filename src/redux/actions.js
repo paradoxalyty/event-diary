@@ -4,9 +4,7 @@ import {
   NEW_MOOD,
   NEW_DATE,
   NEW_DESCRIPTION,
-  NEW_IMG_URL,
-  NEW_IMG_AUTHOR,
-  NEW_IMG_ID,
+  NEW_IMG_DATA,
   CLEAR_FORM,
   NEW_SEARCH_VALUE,
   FETCH_IMAGES_STARTED,
@@ -37,16 +35,8 @@ export const addNewDescription = (newValue) => {
   return { type: NEW_DESCRIPTION, description: newValue };
 };
 
-export const addNewImgUrl = (newValue) => {
-  return { type: NEW_IMG_URL, imgUrl: newValue };
-};
-
-export const addNewImgAuthor = (newValue) => {
-  return { type: NEW_IMG_AUTHOR, imgAuthor: newValue };
-};
-
-export const addNewImgId = (newValue) => {
-  return { type: NEW_IMG_ID, imgId: newValue };
+export const addNewImgData = (payload) => {
+  return { type: NEW_IMG_DATA, payload };
 };
 
 export const clearFormData = () => {
@@ -73,7 +63,7 @@ const requestImagesError = (error) => {
 };
 
 export const fetchImages = (searchQuery) => {
-  const API_URL = `https://api.pexels.com/v1/search?query=${searchQuery}&orientation=landscape&page_1&per_page=12`;
+  const API_URL = `https://api.pexels.com/v1/search?query=${searchQuery}&orientation=landscape&page_1&per_page=20`;
 
   return async (dispatch) => {
     try {
@@ -84,10 +74,10 @@ export const fetchImages = (searchQuery) => {
           Authorization: API_KEY,
         },
       });
-
       const data = await responce.json();
       dispatch(requestImagesSuccess(data));
     } catch (error) {
+      console.warn(error);
       dispatch(requestImagesError(error));
     }
   };
@@ -106,8 +96,8 @@ export const loadFromLocalStorage = () => {
       const localData = JSON.parse(serialisedState);
 
       dispatch(loadLocalData(localData));
-    } catch (e) {
-      console.warn(e);
+    } catch (error) {
+      console.warn(error);
       return undefined;
     }
   };

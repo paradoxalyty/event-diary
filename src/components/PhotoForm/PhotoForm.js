@@ -7,35 +7,32 @@ import { NEW_SEARCH_VALUE } from '../../redux/constants';
 
 import FetchedImages from '../FetchedImages/FetchedImages';
 
-const PhotoForm = (props) => {
-  const {
-    loading,
-    images,
-    fetchImages,
-    loadFromLocalStorage,
-    imgUrl,
-    imgAuthor,
-    imgId,
-    handleChange,
-    handleOnImgClick,
-    searchQuery,
-    searchValue,
-    notes,
-  } = props;
-
+const PhotoForm = ({
+  loading,
+  images,
+  fetchImages,
+  loadFromLocalStorage,
+  handleChange,
+  handleOnImgClick,
+  searchQuery,
+  searchValue,
+  notes,
+}) => {
   useEffect(() => {
     if (notes.length === 0) {
       loadFromLocalStorage();
     }
 
-    if (images.length === 0) {
+    if (searchValue.length === 0) {
       fetchImages(searchQuery);
     }
-  }, [notes.length, images.length, loadFromLocalStorage, fetchImages, searchQuery]);
+  }, [notes.length, searchValue.length, loadFromLocalStorage, fetchImages, searchQuery]);
 
   const onSearchClick = (event) => {
     event.preventDefault();
-    fetchImages(searchValue || searchQuery);
+    if (searchValue.length) {
+      fetchImages(searchValue);
+    }
   };
 
   return (
@@ -48,6 +45,7 @@ const PhotoForm = (props) => {
         placeholder='Search'
         onChange={handleChange}
         autoComplete='off'
+        required
       />
 
       <button className='search-btn' onClick={onSearchClick}></button>
@@ -55,13 +53,7 @@ const PhotoForm = (props) => {
       <div className='new-note-photos'>
         {loading ? <Loader /> : <div className='loader'></div>}
 
-        <FetchedImages
-          images={images}
-          imgUrl={imgUrl}
-          imgAuthor={imgAuthor}
-          imgId={imgId}
-          handleOnImgClick={handleOnImgClick}
-        />
+        <FetchedImages images={images} handleOnImgClick={handleOnImgClick} />
       </div>
     </form>
   );

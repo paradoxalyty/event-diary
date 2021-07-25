@@ -55,6 +55,7 @@
 .new-note-description {
   flex-basis: 100%;
   min-height: 478px;
+  resize: vertical;
 }
 
 .form-btn-wrapper {
@@ -119,5 +120,23 @@
   display: block;
   width: 100%;
   height: 100%;
+  border-radius: 12px;
   object-fit: cover;
+}
+
+.new-note-photo:hover {
+  cursor: pointer;
+}
+
+.new-note-photo:active {
+  animation: rotation 0.3s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }

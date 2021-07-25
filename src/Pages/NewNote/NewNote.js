@@ -12,9 +12,7 @@ import {
   NEW_MOOD,
   NEW_DATE,
   NEW_DESCRIPTION,
-  NEW_IMG_URL,
-  NEW_IMG_AUTHOR,
-  NEW_IMG_ID,
+  NEW_IMG_DATA,
   CLEAR_FORM,
   NEW_SEARCH_VALUE,
 } from '../../redux/constants';
@@ -51,9 +49,12 @@ const NewNote = (props) => {
 
   const handleOnImgClick = (event) => {
     event.preventDefault();
-    props.addNewImgUrl(event.target.src);
-    props.addNewImgAuthor(event.target.alt);
-    props.addNewImgId(event.target.dataset.id);
+    props.addNewImgData({
+      imgUrl: event.target.src,
+      imgAuthor: event.target.alt,
+      imgId: event.target.dataset.id,
+      imgSrcLarge: event.target.dataset.srclarge,
+    });
   };
 
   const handleFormSubmit = (event) => {
@@ -64,9 +65,12 @@ const NewNote = (props) => {
       mood: props.mood,
       date: props.date,
       description: props.description,
-      imgUrl: props.imgUrl,
-      imgAuthor: props.imgAuthor,
-      itemId: props.imgId,
+      imgData: {
+        imgUrl: props.imgUrl,
+        imgAuthor: props.imgAuthor,
+        itemId: props.imgId,
+        imgSrcLarge: props.imgSrcLarge,
+      },
     };
     props.saveToLocalStorage(newNote);
     props.clearFormData();
@@ -100,9 +104,10 @@ const mapStateToProps = (state) => {
     mood: state.newData.mood,
     date: state.newData.date,
     description: state.newData.description,
-    imgUrl: state.newData.imgUrl,
-    imgAuthor: state.newData.imgAuthor,
-    imgId: state.newData.imgId,
+    imgUrl: state.newData.imgData.imgUrl,
+    imgAuthor: state.newData.imgData.imgAuthor,
+    imgId: state.newData.imgData.imgId,
+    imgSrcLarge: state.newData.imgData.imgSrcLarge,
   };
 };
 
@@ -120,14 +125,8 @@ const mapDispatchToProps = (dispatch) => {
     addNewDescription: (newValue) => {
       dispatch({ type: NEW_DESCRIPTION, newValue });
     },
-    addNewImgUrl: (newValue) => {
-      dispatch({ type: NEW_IMG_URL, newValue });
-    },
-    addNewImgAuthor: (newValue) => {
-      dispatch({ type: NEW_IMG_AUTHOR, newValue });
-    },
-    addNewImgId: (newValue) => {
-      dispatch({ type: NEW_IMG_ID, newValue });
+    addNewImgData: (payload) => {
+      dispatch({ type: NEW_IMG_DATA, payload });
     },
     clearFormData: () => {
       dispatch(clearFormData());
