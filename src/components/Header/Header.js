@@ -6,12 +6,12 @@ import './Header.css';
 export const Header = () => {
   return (
     <header className='header'>
-      <div className='logo-wrapper'>
-        <Link className='logo-link' to='/'>
+      <Link className='logo-link' to='/'>
+        <div className='logo-img-wrapper '>
           <img src={logo} className='logo' alt='logo' />
-        </Link>
+        </div>
         <h1>Diary</h1>
-      </div>
+      </Link>
 
       <div className='header-btn-wrapper'>
         <Link to='/' className='btn-common-styles change-display-btn'>

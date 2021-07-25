@@ -83,21 +83,31 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  margin-bottom: 39px;
 }
 
-.modal-box-main > .modal-img {
-  width: 500px;
-  height: 748px;
+.modal-box-main > .modal-img-wrapper {
+  max-width: 940px;
+  max-height: 700px;
   margin-right: 40px;
 }
 
+.modal-img-wrapper > .modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .modal-box-main > .modal-description {
-  max-width: 740px;
+  max-width: 720px;
+  max-height: 700px;
+  padding-right: 10px;
   font-family: Roboto;
   font-style: normal;
   font-weight: 300;
   font-size: 18px;
   line-height: 21px;
+  overflow-y: auto;
 }
 
 @media only screen and (max-width: 1440px) {

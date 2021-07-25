@@ -8,11 +8,7 @@ export const NEW_DATE = 'NEW_DATE';
 
 export const NEW_DESCRIPTION = 'NEW_DESCRIPTION';
 
-export const NEW_IMG_URL = 'NEW_IMG_URL';
-
-export const NEW_IMG_AUTHOR = 'NEW_IMG_AUTHOR';
-
-export const NEW_IMG_ID = 'NEW_IMG_ID';
+export const NEW_IMG_DATA = 'NEW_IMG_DATA';
 
 export const ADD_NEW_NOTE = 'ADD_NEW_NOTE';
 

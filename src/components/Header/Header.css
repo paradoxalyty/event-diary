@@ -11,14 +11,13 @@
   background-color: #fdfcf3;
 }
 
-.logo-wrapper {
+.logo-link {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
   text-decoration: none;
 }
 
-.logo-link {
+.logo-img-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
