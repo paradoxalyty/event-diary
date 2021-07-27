@@ -12,6 +12,7 @@ import {
   FETCH_IMAGES_FAILURE,
   LOAD_LOCAL_DATA,
   SAVE_LOCAL_DATA,
+  DELETE_FROM_LOCAL_NOTES,
   ADD_FILTER_NAME,
   ADD_FILTER_MOOD,
   OPEN_MODAL,
@@ -83,8 +84,8 @@ export const fetchImages = (searchQuery) => {
   };
 };
 
-const loadLocalData = (localData) => {
-  return { type: LOAD_LOCAL_DATA, payload: localData };
+const loadLocalData = (payload) => {
+  return { type: LOAD_LOCAL_DATA, payload };
 };
 
 export const loadFromLocalStorage = () => {
@@ -105,6 +106,10 @@ export const loadFromLocalStorage = () => {
 
 export const saveToLocalStorage = (payload) => {
   return { type: SAVE_LOCAL_DATA, payload };
+};
+
+export const deleteFromLocalNotes = (payload) => {
+  return { type: DELETE_FROM_LOCAL_NOTES, payload };
 };
 
 export const addFilterName = (payload) => {

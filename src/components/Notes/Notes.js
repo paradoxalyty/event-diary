@@ -2,13 +2,19 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Modal from '../Modal/Modal';
 
-import { loadFromLocalStorage, openModal, addModalData } from '../../redux/actions';
+import {
+  loadFromLocalStorage,
+  deleteFromLocalNotes,
+  openModal,
+  addModalData,
+} from '../../redux/actions';
 
 const Notes = ({
   localNotes,
   filterName,
   filterMood,
   loadFromLocalStorage,
+  deleteFromLocalNotes,
   openModal,
   addModalData,
 }) => {
@@ -22,13 +28,24 @@ const Notes = ({
     .filter((note) => note.name.toLowerCase().includes(filterName.toLowerCase()))
     .filter((note) => note.mood.includes(filterMood));
 
-  let notes = filteredNotes;
+  const deleteNote = (event) => {
+    event.stopPropagation();
+    const selectedNoteId = parseInt(event.target.offsetParent.id);
+    const newLocalNotes = localNotes.filter((note) => {
+      return note.id !== selectedNoteId;
+    });
+    deleteFromLocalNotes(newLocalNotes);
+  };
+
+  let notes = [];
   /*if ((filterName || filterMood) && filteredNotes.length) {
     notes = filteredNotes;
   }*/
 
   if (filterName.length === 0 && filterMood.length === 0) {
     notes = localNotes;
+  } else {
+    notes = filteredNotes;
   }
 
   const handleClick = (event) => {
@@ -54,7 +71,7 @@ const Notes = ({
     <div className='notes'>
       {notes.length ? (
         notes.map((note, index) => (
-          <div key={note.imgData.itemId + index} className='note' onClick={handleClick}>
+          <div key={index} id={note.id} className='note' onClick={handleClick}>
             <img
               className='note-img'
               width='100%'
@@ -64,7 +81,8 @@ const Notes = ({
               data-srclarge={note.imgData.imgSrcLarge}
             />
 
-            {note.mood ? <div className='note-mood'>{note.mood}</div> : ''}
+            {note.mood ? <span className='note-mood'>{note.mood}</span> : ''}
+            <span className='note-delete' onClick={deleteNote}></span>
 
             <div className='info-box'>
               <span className='info-titel'>{note.name}</span>
@@ -84,7 +102,7 @@ const Notes = ({
 
 const mapStateToProps = (state) => {
   return {
-    localNotes: state.localData.notes,
+    localNotes: state.localData.localNotes,
     filterName: state.filterNotes.filterName,
     filterMood: state.filterNotes.filterMood,
   };
@@ -94,6 +112,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     loadFromLocalStorage: () => {
       dispatch(loadFromLocalStorage());
+    },
+    deleteFromLocalNotes: (payload) => {
+      dispatch(deleteFromLocalNotes(payload));
     },
     openModal: () => {
       dispatch(openModal());

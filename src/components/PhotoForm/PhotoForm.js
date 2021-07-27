@@ -16,17 +16,23 @@ const PhotoForm = ({
   handleOnImgClick,
   searchQuery,
   searchValue,
-  notes,
+  localNotes,
 }) => {
   useEffect(() => {
-    if (notes.length === 0) {
+    if (localNotes.length === 0) {
       loadFromLocalStorage();
     }
 
     if (searchValue.length === 0) {
       fetchImages(searchQuery);
     }
-  }, [notes.length, searchValue.length, loadFromLocalStorage, fetchImages, searchQuery]);
+  }, [
+    localNotes.length,
+    searchValue.length,
+    loadFromLocalStorage,
+    fetchImages,
+    searchQuery,
+  ]);
 
   const onSearchClick = (event) => {
     event.preventDefault();
@@ -70,7 +76,7 @@ const mapStateToProps = (state) => {
     searchQuery: state.fetchImages.searchQuery,
     searchValue: state.fetchImages.searchValue,
 
-    notes: state.localData.notes,
+    localNotes: state.localData.localNotes,
   };
 };
 

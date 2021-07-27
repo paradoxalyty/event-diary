@@ -47,12 +47,18 @@ const NewNote = (props) => {
     }
   };
 
+  const createRandomId = () => {
+    const randomString = Math.random().toString();
+    const arr = randomString.split('.');
+    return parseInt(arr[1]);
+  };
+
   const handleOnImgClick = (event) => {
     event.preventDefault();
+
     props.addNewImgData({
       imgUrl: event.target.src,
       imgAuthor: event.target.alt,
-      imgId: event.target.dataset.id,
       imgSrcLarge: event.target.dataset.srclarge,
     });
   };
@@ -61,6 +67,7 @@ const NewNote = (props) => {
     event.preventDefault();
 
     const newNote = {
+      id: createRandomId(),
       name: props.name,
       mood: props.mood,
       date: props.date,
@@ -68,7 +75,6 @@ const NewNote = (props) => {
       imgData: {
         imgUrl: props.imgUrl,
         imgAuthor: props.imgAuthor,
-        itemId: props.imgId,
         imgSrcLarge: props.imgSrcLarge,
       },
     };
@@ -108,6 +114,7 @@ const mapStateToProps = (state) => {
     imgAuthor: state.newData.imgData.imgAuthor,
     imgId: state.newData.imgData.imgId,
     imgSrcLarge: state.newData.imgData.imgSrcLarge,
+    localNotes: state.localData.notes,
   };
 };
 

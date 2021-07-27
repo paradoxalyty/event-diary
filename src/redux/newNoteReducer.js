@@ -10,6 +10,7 @@ import {
 const today = new Date().toISOString().substr(0, 10).toString();
 
 const initialState = {
+  id: '',
   name: '',
   mood: '',
   date: today,
@@ -17,7 +18,6 @@ const initialState = {
   imgData: {
     imgUrl: '',
     imgAuthor: '',
-    imgId: '',
     imgSrcLarge: '',
   },
 };
@@ -37,6 +37,7 @@ export const newDataReducer = (state = initialState, action) => {
     case CLEAR_FORM:
       return {
         ...state,
+        id: '',
         name: '',
         mood: '',
         date: today,
@@ -44,7 +45,6 @@ export const newDataReducer = (state = initialState, action) => {
         imgData: {
           imgUrl: '',
           imgAuthor: '',
-          imgId: '',
           imgSrcLarge: '',
         },
       };
