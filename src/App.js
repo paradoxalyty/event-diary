@@ -13,7 +13,7 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route history={history} path='/new-note' component={NewNote} />
-          <Route history={history} path='/' component={Main} />
+          <Route history={history} path='/event-diary' component={Main} />
         </Switch>
       </BrowserRouter>
     );
