@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+// import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Main from './Pages/Main/Main';
@@ -8,14 +9,21 @@ import './App.css';
 
 class App extends Component {
   render() {
-    const { history } = this.props;
+    // const { history } = this.props;
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route history={history} path='/new-note' component={NewNote} />
-          <Route history={history} path='/event-diary' component={Main} />
-        </Switch>
-      </BrowserRouter>
+      // Since BrowserRouter is not supported on GH-Pages, I had to use HashRouter.
+
+      // <BrowserRouter>
+      //   <Switch>
+      //     <Route history={history} path='/new-note' component={NewNote} />
+      //     <Route history={history} path='/event-diary' component={Main} />
+      //   </Switch>
+      // </BrowserRouter>
+
+      <Router>
+        <Route path='/new-note' component={NewNote} />
+        <Route path='/event-diary' component={Main} />
+      </Router>
     );
   }
 }
