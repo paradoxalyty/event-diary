@@ -6,7 +6,7 @@ import './Header.css';
 export const Header = () => {
   return (
     <header className='header'>
-      <Link className='logo-link' to='/event-diary'>
+      <Link className='logo-link' to='/'>
         <div className='logo-img-wrapper '>
           <img src={logo} className='logo' alt='logo' />
         </div>
@@ -14,7 +14,7 @@ export const Header = () => {
       </Link>
 
       <div className='header-btn-wrapper'>
-        <Link to='/event-diary' className='btn-common-styles change-display-btn'>
+        <Link to='/' className='btn-common-styles change-display-btn'>
           Main
         </Link>
 

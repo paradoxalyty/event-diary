@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Main from './Pages/Main/Main';
@@ -20,10 +20,10 @@ class App extends Component {
       //   </Switch>
       // </BrowserRouter>
 
-      <Router>
+      <HashRouter>
+        <Route exact path='/' component={Main} />
         <Route path='/new-note' component={NewNote} />
-        <Route path='/event-diary' component={Main} />
-      </Router>
+      </HashRouter>
     );
   }
 }
