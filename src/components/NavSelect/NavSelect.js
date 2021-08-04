@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { MOODS, NEW_MOOD } from '../../redux/constants';
-
 import { addFilterMood } from '../../redux/actions';
 
 const NavSelect = ({ addFilterMood }) => {
@@ -10,7 +9,11 @@ const NavSelect = ({ addFilterMood }) => {
   };
 
   return (
-    <select className='select' name={NEW_MOOD} onChange={handleChangeFilter}>
+    <select
+      className='nav-select select-common-styles'
+      name={NEW_MOOD}
+      onChange={handleChangeFilter}
+    >
       <option value=''>🌚</option>
       {MOODS.map((mood, index) => (
         <option key={index} name={NEW_MOOD} value={mood} className='mood'>

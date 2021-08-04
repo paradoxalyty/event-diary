@@ -22,31 +22,6 @@
   flex-basis: 100%;
 }
 
-.select {
-  position: relative;
-  width: 100px;
-  height: 60px;
-  margin: 0 16px 16px 0;
-  border: none;
-  border-radius: 12px;
-  padding-left: 16px;
-  background: #ffffff no-repeat 80% 50% url('../../assets/chevron-down.png');
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 60px;
-  cursor: pointer;
-}
-
-.select:focus {
-  outline: none;
-  border: #ffce89 solid 1px;
-}
-
 .new-note-date {
   width: 210px;
   color: #acacac;
@@ -113,6 +88,7 @@
   flex-basis: 49%;
   margin-bottom: 16px;
   border-radius: 12px;
+  background: black;
   overflow: hidden;
 }
 
@@ -129,14 +105,5 @@
 }
 
 .new-note-photo:active {
-  animation: rotation 0.3s infinite linear;
-}
-
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
+  opacity: 0.5;
 }

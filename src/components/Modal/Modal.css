@@ -29,7 +29,7 @@
   width: 90vw;
   height: auto;
   padding: 44px 40px;
-  overflow-y: auto;
+  overflow-y: scroll;
   background: #ffffff;
   border-radius: 12px;
   z-index: 101;
@@ -87,6 +87,7 @@
 }
 
 .modal-box-main > .modal-img-wrapper {
+  flex-basis: 60%;
   max-width: 940px;
   max-height: 700px;
   margin-right: 40px;
@@ -99,6 +100,7 @@
 }
 
 .modal-box-main > .modal-description {
+  flex-basis: 40%;
   max-width: 720px;
   max-height: 700px;
   padding-right: 10px;
@@ -107,7 +109,6 @@
   font-weight: 300;
   font-size: 18px;
   line-height: 21px;
-  overflow-y: auto;
 }
 
 @media only screen and (max-width: 1440px) {
@@ -118,4 +119,73 @@
 }
 
 @media only screen and (max-width: 1024px) {
+  .modal-box-heading {
+    margin-bottom: 20px;
+  }
+
+  .modal-box-heading > .modal-mood {
+    font-size: 36px;
+    line-height: 42px;
+  }
+
+  .modal-box-heading > .modal-titel {
+    font-size: 36px;
+    line-height: 42px;
+  }
+
+  .modal-box-heading > .modal-date {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .modal-box-main {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .modal-box-main > .modal-img-wrapper {
+    flex-basis: 80%;
+    margin: 0 0 20px 0;
+  }
+
+  .modal-box-main > .modal-description {
+    flex-basis: 100%;
+  }
+}
+
+@media only screen and (max-width: 740px) {
+  .modal-box {
+    padding: 0;
+  }
+
+  .modal-box-heading {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 20px 20px 0 20px;
+  }
+
+  .modal-box-heading > .modal-mood {
+    padding: 0 12px 0 0;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .modal-box-heading > .modal-titel {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .modal-box-heading > .modal-date {
+    padding: 10px 37px 4px 37px;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .modal-box-main > .modal-img-wrapper {
+    flex-basis: 100%;
+  }
+
+  .modal-box-main > .modal-description {
+    padding: 0 20px;
+  }
 }

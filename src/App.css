@@ -83,6 +83,31 @@ body {
   color: #acacac;
 }
 
+.select-common-styles {
+  position: relative;
+  width: 130px;
+  height: 60px;
+  margin: 0 16px 16px 0;
+  border: none;
+  border-radius: 12px;
+  padding-left: 16px;
+  background: #ffffff no-repeat 80% 50% url('./assets/chevron-down.png');
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 60px;
+  cursor: pointer;
+}
+
+.select-common-styles:focus {
+  outline: none;
+  border: #ffce89 solid 1px;
+}
+
 @media only screen and (max-width: 1440px) {
   .app-root {
     width: 100vw;
@@ -101,8 +126,12 @@ body {
     width: 744px;
   }
 
-  .nav > .select {
+  .nav-select {
     margin: 0;
+  }
+
+  .notes {
+    grid-template-columns: repeat(3, 325px [col-start]);
   }
 
   .new-note-search {
@@ -127,6 +156,8 @@ body {
   }
 
   .notes {
+    grid-template-columns: repeat(2, 325px [col-start]);
+    justify-content: space-evenly;
     padding: 0 30px;
   }
 
@@ -156,10 +187,6 @@ body {
   .new-note-name {
     flex-basis: 56%;
   }
-
-  .select {
-    margin: 0 0 16px 0;
-  }
 }
 
 @media only screen and (max-width: 740px) {
@@ -169,7 +196,7 @@ body {
   }
 
   .nav {
-    padding: 0 20px 20px 20px;
+    padding: 0 10px 10px;
   }
 
   .nav > .search {
@@ -177,14 +204,16 @@ body {
     height: 40px;
   }
 
-  .select {
+  .select-common-styles {
     width: 80px;
+    min-width: 40px;
     height: 40px;
+    padding-left: 10px;
     font-size: 20px;
     line-height: 42px;
   }
 
-  .logo-wrapper {
+  .logo-link {
     margin-bottom: 12px;
   }
 
@@ -193,12 +222,12 @@ body {
     line-height: 28px;
   }
 
-  .logo-link {
+  .logo-img-wrapper {
     width: 40px;
     height: 40px;
   }
 
-  .logo-link > img {
+  .logo-img-wrapper > .logo {
     width: 15px;
     height: 19px;
   }
@@ -224,8 +253,13 @@ body {
   }
 
   .notes {
-    justify-content: center;
+    grid-template-columns: repeat(1, 325px [col-start]);
+    justify-content: space-evenly;
     padding: 0;
+  }
+
+  .note {
+    justify-self: center;
   }
 
   .new-note-name {
@@ -260,6 +294,22 @@ body {
     z-index: 1;
     width: 82vw;
     margin: 20px 20px 20px 10px;
+  }
+
+  .logo-link {
+    margin-bottom: 0;
+  }
+
+  .nav {
+    padding: 0 20px 10px 20px;
+  }
+
+  .input-common-styles {
+    margin-bottom: 10px;
+  }
+
+  .data-form-select {
+    margin: 0 0 10px 0;
   }
 
   .note {
