@@ -157,7 +157,6 @@ body {
 
   .notes {
     grid-template-columns: repeat(2, 325px [col-start]);
-    justify-content: space-evenly;
     padding: 0 30px;
   }
 
@@ -239,18 +238,18 @@ body {
   .btn-common-styles {
     width: 135px;
     height: 30px;
-    padding: 0;
-    font-size: 2px;
-    color: transparent;
+    padding: 0 0 0 32px;
+    font-size: 12px;
+    line-height: 32px;
   }
 
-  .change-display-btn {
+  /* .notes-btn {
     background-position: center;
-  }
+  } */
 
-  .add-note-btn {
+  /* .add-note-btn {
     background-position: center;
-  }
+  } */
 
   .notes {
     grid-template-columns: repeat(1, 325px [col-start]);
@@ -271,10 +270,10 @@ body {
     height: 40px;
   }
 
-  .save-note-btn,
+  /* .save-note-btn,
   .clear-form-btn {
     background-position: center;
-  }
+  } */
 
   .new-note-search {
     width: 80%;

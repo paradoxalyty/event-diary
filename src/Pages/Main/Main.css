@@ -13,7 +13,7 @@
   display: grid;
   grid-template-columns: repeat(4, 325px [col-start]);
   grid-template-rows: auto;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 0 30px;
 }
 

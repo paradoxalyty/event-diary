@@ -48,10 +48,10 @@ h1 {
   justify-content: space-between;
 }
 
-.change-display-btn {
+.notes-btn {
   margin-right: 14px;
   color: #1e2022;
-  background: #ffce89 no-repeat 32% 50% url('../../assets/display-notes.png');
+  background: #ffce89 no-repeat 20% 50% url('../../assets/display-notes.png');
 }
 
 .add-note-btn {

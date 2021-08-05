@@ -14,8 +14,8 @@ export const Header = () => {
       </Link>
 
       <div className='header-btn-wrapper'>
-        <Link to='/' className='btn-common-styles change-display-btn'>
-          Main
+        <Link to='/' className='btn-common-styles notes-btn'>
+          Notes
         </Link>
 
         <Link className='btn-common-styles add-note-btn' to='/new-note'>
