@@ -4,6 +4,8 @@ import {
   NEW_DATE,
   NEW_DESCRIPTION,
   NEW_IMG_DATA,
+  VALIDATE_NAME,
+  VALIDATE_PHOTO,
   CLEAR_FORM,
 } from './constants';
 
@@ -19,7 +21,10 @@ const initialState = {
     imgUrl: '',
     imgAuthor: '',
     imgSrcLarge: '',
+    isPhotoAdded: false,
   },
+  isNameValid: true,
+  isPhotoValid: true,
 };
 
 export const newDataReducer = (state = initialState, action) => {
@@ -46,8 +51,19 @@ export const newDataReducer = (state = initialState, action) => {
           imgUrl: '',
           imgAuthor: '',
           imgSrcLarge: '',
+          isPhotoAdded: false,
         },
+        isNameValid: true,
+        isPhotoValid: true,
       };
+    case VALIDATE_NAME:
+      return state.name.length
+        ? { ...state, isNameValid: true }
+        : { ...state, isNameValid: false };
+    case VALIDATE_PHOTO:
+      return state.imgData.isPhotoAdded
+        ? { ...state, isPhotoValid: true }
+        : { ...state, isPhotoValid: false };
     default:
       return state;
   }

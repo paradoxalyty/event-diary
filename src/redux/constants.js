@@ -12,6 +12,10 @@ export const NEW_IMG_DATA = 'NEW_IMG_DATA';
 
 export const ADD_NEW_NOTE = 'ADD_NEW_NOTE';
 
+export const VALIDATE_NAME = 'VALIDATE_NAME';
+
+export const VALIDATE_PHOTO = 'VALIDATE_PHOTO';
+
 export const CLEAR_FORM = 'CLEAR_FORM';
 
 export const NEW_SEARCH_VALUE = 'NEW_SEARCH_VALUE';

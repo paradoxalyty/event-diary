@@ -5,6 +5,8 @@ import {
   NEW_DATE,
   NEW_DESCRIPTION,
   NEW_IMG_DATA,
+  VALIDATE_NAME,
+  VALIDATE_PHOTO,
   CLEAR_FORM,
   NEW_SEARCH_VALUE,
   FETCH_IMAGES_STARTED,
@@ -38,6 +40,14 @@ export const addNewDescription = (newValue) => {
 
 export const addNewImgData = (payload) => {
   return { type: NEW_IMG_DATA, payload };
+};
+
+export const validateName = () => {
+  return { type: VALIDATE_NAME };
+};
+
+export const validatePhoto = () => {
+  return { type: VALIDATE_PHOTO };
 };
 
 export const clearFormData = () => {

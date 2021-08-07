@@ -8,17 +8,24 @@ const DataForm = ({
   description,
   imgUrl,
   imgAuthor,
+  isPhotoAdded,
+  isNameValid,
+  isPhotoValid,
   handleChange,
   handleFormSubmit,
 }) => {
   return (
     <form className='new-note-form' onSubmit={handleFormSubmit}>
       <input
-        className='new-note-name input-common-styles'
+        className={
+          isNameValid
+            ? 'new-note-name input-common-styles'
+            : 'new-note-name input-common-styles required'
+        }
         type='text'
         name={NEW_NAME}
         value={name}
-        placeholder='Name'
+        placeholder='Name is required'
         onChange={handleChange}
         autoComplete='off'
       />
@@ -52,18 +59,22 @@ const DataForm = ({
           clear form
         </button>
 
-        <button className='btn-common-styles save-note-btn' onClick={handleFormSubmit}>
+        <button className='btn-common-styles save-note-btn' type='submit'>
           save
         </button>
       </div>
 
-      {imgUrl && (
-        <div className='selected-photo-wrapper'>
+      <div className='selected-photo-wrapper'>
+        {isPhotoAdded ? (
           <div className='selected-photo'>
             <img className='new-note-photo' src={imgUrl} alt={imgAuthor} />
           </div>
-        </div>
-      )}
+        ) : (
+          <p className={isPhotoValid ? 'warn-text' : 'warn-text required'}>
+            Photo is required
+          </p>
+        )}
+      </div>
     </form>
   );
 };
