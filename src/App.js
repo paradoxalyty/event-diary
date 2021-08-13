@@ -2,11 +2,11 @@ import React from 'react';
 // import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { HashRouter, Route } from 'react-router-dom';
 
-import Main from './Pages/Main/Main';
+import { Main } from './Pages/Main/Main';
 import NewNote from './Pages/NewNote/NewNote';
 import './App.css';
 
-const App = () => {
+export const App = () => {
   return (
     // Since BrowserRouter is not supported on GH-Pages, I had to use HashRouter.
 
@@ -23,5 +23,3 @@ const App = () => {
     </HashRouter>
   );
 };
-
-export default App;

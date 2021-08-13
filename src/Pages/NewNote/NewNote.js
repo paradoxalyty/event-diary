@@ -1,28 +1,56 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { loadFromLocalStorage } from '../../redux/actions';
+import {
+  addNewName,
+  addNewMood,
+  addNewDate,
+  addNewDescription,
+  addNewImgData,
+  validateName,
+  validatePhoto,
+  clearFormData,
+  addSearchValue,
+  saveToLocalStorage,
+} from '../../redux/actions';
 
 import {
   NEW_NAME,
   NEW_MOOD,
   NEW_DATE,
   NEW_DESCRIPTION,
-  NEW_IMG_DATA,
-  VALIDATE_NAME,
-  VALIDATE_PHOTO,
   CLEAR_FORM,
   NEW_SEARCH_VALUE,
-  SAVE_LOCAL_DATA,
 } from '../../redux/constants';
 
 import { Header } from '../../components/Header/Header';
-import DataForm from '../../components/DataForm/DataForm';
+import { DataForm } from '../../components/DataForm/DataForm';
 import PhotoForm from '../../components/PhotoForm/PhotoForm';
 
 import './NewNote.css';
 
-const NewNote = (props) => {
+const NewNote = ({
+  name,
+  mood,
+  date,
+  description,
+  imgUrl,
+  imgAuthor,
+  imgSrcLarge,
+  isPhotoAdded,
+  isNameValid,
+  isPhotoValid,
+  addNewName,
+  addNewMood,
+  addNewDate,
+  addNewDescription,
+  addNewImgData,
+  validateName,
+  validatePhoto,
+  clearFormData,
+  addSearchValue,
+  saveToLocalStorage,
+}) => {
   const handleChange = (event) => {
     event.preventDefault();
     const targetName = event.target.name;
@@ -30,19 +58,19 @@ const NewNote = (props) => {
 
     switch (targetName) {
       case NEW_NAME:
-        props.addNewName(targetValue);
-        props.validateName();
+        addNewName(targetValue);
+        validateName();
         break;
       case NEW_MOOD:
-        return props.addNewMood(targetValue);
+        return addNewMood(targetValue);
       case NEW_DATE:
-        return props.addNewDate(targetValue);
+        return addNewDate(targetValue);
       case NEW_DESCRIPTION:
-        return props.addNewDescription(targetValue);
+        return addNewDescription(targetValue);
       case CLEAR_FORM:
-        return props.clearFormData();
+        return clearFormData();
       case NEW_SEARCH_VALUE:
-        return props.addSearchValue(targetValue.trimStart());
+        return addSearchValue(targetValue.trimStart());
       default:
       // ignore default
     }
@@ -57,38 +85,38 @@ const NewNote = (props) => {
   const handleOnImgClick = (event) => {
     event.preventDefault();
 
-    props.addNewImgData({
+    addNewImgData({
       imgUrl: event.target.src,
       imgAuthor: event.target.alt,
       imgSrcLarge: event.target.dataset.srclarge,
       isPhotoAdded: true,
     });
 
-    props.validatePhoto();
+    validatePhoto();
   };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    props.validateName();
-    props.validatePhoto();
+    validateName();
+    validatePhoto();
 
-    if (props.name.length && props.isPhotoAdded) {
+    if (name.length && isPhotoAdded) {
       const newNote = {
         id: createRandomId(),
-        name: props.name,
-        mood: props.mood,
-        date: props.date,
-        description: props.description,
+        name: name,
+        mood: mood,
+        date: date,
+        description: description,
         imgData: {
-          imgUrl: props.imgUrl,
-          imgAuthor: props.imgAuthor,
-          imgSrcLarge: props.imgSrcLarge,
+          imgUrl: imgUrl,
+          imgAuthor: imgAuthor,
+          imgSrcLarge: imgSrcLarge,
           isPhotoAdded: false,
         },
       };
-      props.saveToLocalStorage(newNote);
-      props.clearFormData();
+      saveToLocalStorage(newNote);
+      clearFormData();
     }
   };
 
@@ -100,14 +128,14 @@ const NewNote = (props) => {
         <DataForm
           handleFormSubmit={handleFormSubmit}
           handleChange={handleChange}
-          name={props.name}
-          date={props.date}
-          description={props.description}
-          imgUrl={props.imgUrl}
-          imgAuthor={props.imgAuthor}
-          isPhotoAdded={props.isPhotoAdded}
-          isNameValid={props.isNameValid}
-          isPhotoValid={props.isPhotoValid}
+          name={name}
+          date={date}
+          description={description}
+          imgUrl={imgUrl}
+          imgAuthor={imgAuthor}
+          isPhotoAdded={isPhotoAdded}
+          isNameValid={isNameValid}
+          isPhotoValid={isPhotoValid}
         />
         <PhotoForm handleChange={handleChange} handleOnImgClick={handleOnImgClick} />
       </div>
@@ -117,59 +145,30 @@ const NewNote = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    name: state.newData.name,
-    mood: state.newData.mood,
-    date: state.newData.date,
-    description: state.newData.description,
-    imgUrl: state.newData.imgData.imgUrl,
-    imgAuthor: state.newData.imgData.imgAuthor,
-    imgId: state.newData.imgData.imgId,
-    imgSrcLarge: state.newData.imgData.imgSrcLarge,
-    isPhotoAdded: state.newData.imgData.isPhotoAdded,
-    localNotes: state.localData.notes,
-    isNameValid: state.newData.isNameValid,
-    isPhotoValid: state.newData.isPhotoValid,
+    name: state.newNote.name,
+    mood: state.newNote.mood,
+    date: state.newNote.date,
+    description: state.newNote.description,
+    imgUrl: state.newNote.imgData.imgUrl,
+    imgAuthor: state.newNote.imgData.imgAuthor,
+    imgSrcLarge: state.newNote.imgData.imgSrcLarge,
+    isPhotoAdded: state.newNote.imgData.isPhotoAdded,
+    isNameValid: state.newNote.isNameValid,
+    isPhotoValid: state.newNote.isPhotoValid,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addNewName: (newValue) => {
-      dispatch({ type: NEW_NAME, newValue });
-    },
-    addNewMood: (newValue) => {
-      dispatch({ type: NEW_MOOD, newValue });
-    },
-    addNewDate: (newValue) => {
-      dispatch({ type: NEW_DATE, newValue });
-    },
-    addNewDescription: (newValue) => {
-      dispatch({ type: NEW_DESCRIPTION, newValue });
-    },
-    addNewImgData: (payload) => {
-      dispatch({ type: NEW_IMG_DATA, payload });
-    },
-    validateName: () => {
-      dispatch({ type: VALIDATE_NAME });
-    },
-    validatePhoto: () => {
-      dispatch({ type: VALIDATE_PHOTO });
-    },
-    clearFormData: () => {
-      dispatch({ type: CLEAR_FORM });
-    },
-    addSearchValue: (payload) => {
-      dispatch({ type: NEW_SEARCH_VALUE, payload });
-    },
-
-    loadFromLocalStorage: () => {
-      dispatch(loadFromLocalStorage());
-    },
-
-    saveToLocalStorage: (payload) => {
-      dispatch({ type: SAVE_LOCAL_DATA, payload });
-    },
-  };
+const mapDispatchToProps = {
+  addNewName,
+  addNewMood,
+  addNewDate,
+  addNewDescription,
+  addNewImgData,
+  validateName,
+  validatePhoto,
+  clearFormData,
+  addSearchValue,
+  saveToLocalStorage,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewNote);

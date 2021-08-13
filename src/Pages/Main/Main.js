@@ -6,7 +6,7 @@ import Notes from '../../components/Notes/Notes';
 
 import './Main.css';
 
-const Main = () => {
+export const Main = () => {
   return (
     <>
       <Header />
@@ -17,5 +17,3 @@ const Main = () => {
     </>
   );
 };
-
-export default Main;

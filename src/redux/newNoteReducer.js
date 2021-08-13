@@ -27,16 +27,16 @@ const initialState = {
   isPhotoValid: true,
 };
 
-export const newDataReducer = (state = initialState, action) => {
+export const newNoteReducer = (state = initialState, action) => {
   switch (action.type) {
     case NEW_NAME:
-      return { ...state, name: action.newValue };
+      return { ...state, name: action.payload };
     case NEW_MOOD:
-      return { ...state, mood: action.newValue };
+      return { ...state, mood: action.payload };
     case NEW_DATE:
-      return { ...state, date: action.newValue };
+      return { ...state, date: action.payload };
     case NEW_DESCRIPTION:
-      return { ...state, description: action.newValue };
+      return { ...state, description: action.payload };
     case NEW_IMG_DATA:
       return { ...state, imgData: action.payload };
     case CLEAR_FORM:

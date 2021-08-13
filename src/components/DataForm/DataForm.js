@@ -1,8 +1,8 @@
 import React from 'react';
-import DataFormSelect from '../DataFormSelect/DataFormSelect';
+import { DataFormSelect } from '../DataFormSelect/DataFormSelect';
 import { NEW_NAME, NEW_DATE, NEW_DESCRIPTION, CLEAR_FORM } from '../../redux/constants';
 
-const DataForm = ({
+export const DataForm = ({
   name,
   date,
   description,
@@ -78,5 +78,3 @@ const DataForm = ({
     </form>
   );
 };
-
-export default DataForm;

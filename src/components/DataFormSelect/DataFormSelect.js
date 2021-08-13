@@ -1,7 +1,7 @@
 import React from 'react';
 import { MOODS, NEW_MOOD } from '../../redux/constants';
 
-const DataFormSelect = ({ handleChange }) => {
+export const DataFormSelect = ({ handleChange }) => {
   return (
     <select
       className='data-form-select select-common-styles'
@@ -17,5 +17,3 @@ const DataFormSelect = ({ handleChange }) => {
     </select>
   );
 };
-
-export default DataFormSelect;

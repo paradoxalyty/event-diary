@@ -22,20 +22,20 @@ import {
   ADD_MODAL_DATA,
 } from './constants';
 
-export const addNewName = (newValue) => {
-  return { type: NEW_NAME, name: newValue };
+export const addNewName = (payload) => {
+  return { type: NEW_NAME, payload };
 };
 
-export const addNewMood = (newValue) => {
-  return { type: NEW_MOOD, mood: newValue };
+export const addNewMood = (payload) => {
+  return { type: NEW_MOOD, payload };
 };
 
-export const addNewDate = (newValue) => {
-  return { type: NEW_DATE, date: newValue };
+export const addNewDate = (payload) => {
+  return { type: NEW_DATE, payload };
 };
 
-export const addNewDescription = (newValue) => {
-  return { type: NEW_DESCRIPTION, description: newValue };
+export const addNewDescription = (payload) => {
+  return { type: NEW_DESCRIPTION, payload };
 };
 
 export const addNewImgData = (payload) => {

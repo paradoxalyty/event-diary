@@ -27,12 +27,6 @@ const mapStateToProps = (state) => {
   return { filterName: state.filterNotes.filterName };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addFilterName: (value) => {
-      dispatch(addFilterName(value));
-    },
-  };
-};
+const mapDispatchToProps = { addFilterName };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav);

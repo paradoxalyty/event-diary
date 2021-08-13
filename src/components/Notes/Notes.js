@@ -38,9 +38,6 @@ const Notes = ({
   };
 
   let notes = [];
-  /*if ((filterName || filterMood) && filteredNotes.length) {
-    notes = filteredNotes;
-  }*/
 
   if (filterName.length === 0 && filterMood.length === 0) {
     notes = localNotes;
@@ -108,21 +105,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loadFromLocalStorage: () => {
-      dispatch(loadFromLocalStorage());
-    },
-    deleteFromLocalNotes: (payload) => {
-      dispatch(deleteFromLocalNotes(payload));
-    },
-    openModal: () => {
-      dispatch(openModal());
-    },
-    addModalData: (payload) => {
-      dispatch(addModalData(payload));
-    },
-  };
+const mapDispatchToProps = {
+  loadFromLocalStorage,
+  deleteFromLocalNotes,
+  openModal,
+  addModalData,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notes);

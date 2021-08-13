@@ -24,12 +24,6 @@ const NavSelect = ({ addFilterMood }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addFilterMood: (value) => {
-      dispatch(addFilterMood(value));
-    },
-  };
-};
+const mapDispatchToProps = { addFilterMood };
 
 export default connect(null, mapDispatchToProps)(NavSelect);

@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Loader } from '../Loader/Loader';
+import { FetchedImages } from '../FetchedImages/FetchedImages';
 
 import { fetchImages, loadFromLocalStorage } from '../../redux/actions';
 import { NEW_SEARCH_VALUE } from '../../redux/constants';
-
-import FetchedImages from '../FetchedImages/FetchedImages';
 
 const PhotoForm = ({
   loading,
@@ -67,9 +66,9 @@ const PhotoForm = ({
 
 const mapStateToProps = (state) => {
   return {
-    imgUrl: state.newData.imgUrl,
-    imgAuthor: state.newData.imgAuthor,
-    imgId: state.newData.imgId,
+    imgUrl: state.newNote.imgUrl,
+    imgAuthor: state.newNote.imgAuthor,
+    imgId: state.newNote.imgId,
 
     loading: state.fetchImages.loading,
     images: state.fetchImages.fetchedImages,
@@ -80,16 +79,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchImages: (searchQuery) => {
-      dispatch(fetchImages(searchQuery));
-    },
-
-    loadFromLocalStorage: () => {
-      dispatch(loadFromLocalStorage());
-    },
-  };
-};
+const mapDispatchToProps = { fetchImages, loadFromLocalStorage };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoForm);

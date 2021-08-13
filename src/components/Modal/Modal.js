@@ -18,8 +18,9 @@ const Modal = ({
   if (isOpen) {
     return ReactDOM.createPortal(
       /*
-        createPortal опрокидывает div с классом modal-wrapper в div с классом modal-root,
-        который находится в файле index.html 
+        createPortal опрокидывает div с классом modal-wrapper в div с классом modal-root, который находится в файле index.html 
+
+        Portals provide a way to render children into a DOM node that exists outside the hierarchy of the DOM component.
       */
 
       <div className='modal-wrapper'>
@@ -59,12 +60,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    closeModal: () => {
-      dispatch(closeModal());
-    },
-  };
-};
+const mapDispatchToProps = { closeModal };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);

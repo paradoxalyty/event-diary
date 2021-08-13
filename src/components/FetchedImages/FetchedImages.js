@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FetchedImages = ({ images, handleOnImgClick }) => {
+export const FetchedImages = ({ images, handleOnImgClick }) => {
   return (
     <>
       {images &&
@@ -21,5 +21,3 @@ const FetchedImages = ({ images, handleOnImgClick }) => {
     </>
   );
 };
-
-export default FetchedImages;
