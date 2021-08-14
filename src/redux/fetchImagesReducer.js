@@ -31,6 +31,7 @@ export const fetchImagesReducer = (state = initialState, action) => {
       };
     case FETCH_IMAGES_FAILURE:
       return {
+        ...state,
         loading: false,
         error: true,
       };
