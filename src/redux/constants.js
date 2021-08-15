@@ -36,6 +36,8 @@ export const ADD_FILTER_NAME = 'ADD_FILTER_NAME';
 
 export const ADD_FILTER_MOOD = 'ADD_FILTER_MOOD';
 
+export const CLEAR_FILTERS = 'CLEAR_FILTERS';
+
 export const OPEN_MODAL = 'OPEN_MODAL';
 
 export const CLOSE_MODAL = 'CLOSE_MODAL';

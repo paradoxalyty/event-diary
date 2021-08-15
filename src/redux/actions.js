@@ -17,6 +17,7 @@ import {
   DELETE_FROM_LOCAL_NOTES,
   ADD_FILTER_NAME,
   ADD_FILTER_MOOD,
+  CLEAR_FILTERS,
   OPEN_MODAL,
   CLOSE_MODAL,
   ADD_MODAL_DATA,
@@ -128,6 +129,10 @@ export const addFilterName = (payload) => {
 
 export const addFilterMood = (payload) => {
   return { type: ADD_FILTER_MOOD, payload };
+};
+
+export const clearFilters = () => {
+  return { type: CLEAR_FILTERS };
 };
 
 export const openModal = () => {

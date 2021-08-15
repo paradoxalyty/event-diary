@@ -113,20 +113,7 @@ body {
     width: 100vw;
   }
 
-  .header {
-    padding: 30px 40px 20px 40px;
-  }
-
-  .nav {
-    justify-content: space-around;
-    order: 3;
-  }
-
-  .nav > .search {
-    width: 744px;
-  }
-
-  .nav-select {
+  .filters-select {
     margin: 0;
   }
 
@@ -150,9 +137,13 @@ body {
 }
 
 @media only screen and (max-width: 1024px) {
-  .nav {
-    justify-content: space-between;
-    padding: 0 80px 80px 80px;
+  .filters {
+    flex-wrap: wrap;
+    padding: 0 80px 40px;
+  }
+
+  input.filters-search {
+    margin: 0 0 14px 0;
   }
 
   .notes {
@@ -176,15 +167,11 @@ body {
 
   .new-note-form {
     flex-basis: 100%;
-    justify-content: space-between;
+    justify-content: center;
   }
 
   .search-form {
     flex-basis: 100%;
-  }
-
-  .new-note-name {
-    flex-basis: 56%;
   }
 }
 
@@ -192,24 +179,6 @@ body {
   .header,
   .forms-wrapper {
     padding: 20px;
-  }
-
-  .nav {
-    padding: 0 20px;
-  }
-
-  .nav > .search {
-    width: 60vw;
-    height: 40px;
-  }
-
-  .select-common-styles {
-    width: 80px;
-    min-width: 40px;
-    height: 40px;
-    padding-left: 10px;
-    font-size: 20px;
-    line-height: 42px;
   }
 
   .logo-link {
@@ -243,13 +212,31 @@ body {
     line-height: 32px;
   }
 
-  /* .notes-btn {
-    background-position: center;
-  } */
+  .filters {
+    padding: 0 20px 20px;
+  }
 
-  /* .add-note-btn {
-    background-position: center;
-  } */
+  input.filters-search {
+    width: 80vw;
+    height: 40px;
+  }
+
+  .select-common-styles {
+    width: 80px;
+    min-width: 40px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 20px;
+    line-height: 42px;
+  }
+
+  select.filters-select {
+    width: 100px;
+  }
+
+  button.clear-filters-btn {
+    width: 100px;
+  }
 
   .notes {
     grid-template-columns: repeat(1, 325px [col-start]);
@@ -267,13 +254,9 @@ body {
   }
 
   .new-note-date {
+    width: 180px;
     height: 40px;
   }
-
-  /* .save-note-btn,
-  .clear-form-btn {
-    background-position: center;
-  } */
 
   .new-note-search {
     width: 80%;
@@ -289,7 +272,7 @@ body {
 @media only screen and (max-width: 340px) {
   .header-btn-wrapper {
     position: fixed;
-    bottom: 0;
+    bottom: 10px;
     z-index: 1;
     width: 82vw;
     margin: 20px 20px 20px 10px;
@@ -299,16 +282,12 @@ body {
     margin-bottom: 0;
   }
 
-  .nav {
-    padding: 0 20px 10px 20px;
-  }
-
   .input-common-styles {
     margin-bottom: 10px;
   }
 
   .data-form-select {
-    margin: 0 0 10px 0;
+    margin: 0 10px 10px 0;
   }
 
   .note {

@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { MOODS, NEW_MOOD } from '../../redux/constants';
 import { addFilterMood } from '../../redux/actions';
 
-const NavSelect = ({ addFilterMood }) => {
+const FiltersSelect = ({ addFilterMood }) => {
   const handleChangeFilter = (event) => {
     addFilterMood(event.target.value);
   };
 
   return (
     <select
-      className='nav-select select-common-styles'
+      className='filters-select select-common-styles'
       name={NEW_MOOD}
       onChange={handleChangeFilter}
     >
@@ -26,4 +26,4 @@ const NavSelect = ({ addFilterMood }) => {
 
 const mapDispatchToProps = { addFilterMood };
 
-export default connect(null, mapDispatchToProps)(NavSelect);
+export default connect(null, mapDispatchToProps)(FiltersSelect);
