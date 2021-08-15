@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/event-diary/static/css/main.2f252875.chunk.css",
-    "main.js": "/event-diary/static/js/main.d2d83259.chunk.js",
-    "main.js.map": "/event-diary/static/js/main.d2d83259.chunk.js.map",
+    "main.css": "/event-diary/static/css/main.cfa70f4a.chunk.css",
+    "main.js": "/event-diary/static/js/main.c658051d.chunk.js",
+    "main.js.map": "/event-diary/static/js/main.c658051d.chunk.js.map",
     "runtime-main.js": "/event-diary/static/js/runtime-main.a329bf6a.js",
     "runtime-main.js.map": "/event-diary/static/js/runtime-main.a329bf6a.js.map",
     "static/js/2.26a66c53.chunk.js": "/event-diary/static/js/2.26a66c53.chunk.js",
     "static/js/2.26a66c53.chunk.js.map": "/event-diary/static/js/2.26a66c53.chunk.js.map",
     "index.html": "/event-diary/index.html",
-    "static/css/main.2f252875.chunk.css.map": "/event-diary/static/css/main.2f252875.chunk.css.map",
+    "static/css/main.cfa70f4a.chunk.css.map": "/event-diary/static/css/main.cfa70f4a.chunk.css.map",
     "static/js/2.26a66c53.chunk.js.LICENSE.txt": "/event-diary/static/js/2.26a66c53.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a329bf6a.js",
     "static/js/2.26a66c53.chunk.js",
-    "static/css/main.2f252875.chunk.css",
-    "static/js/main.d2d83259.chunk.js"
+    "static/css/main.cfa70f4a.chunk.css",
+    "static/js/main.c658051d.chunk.js"
   ]
 }
