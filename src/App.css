@@ -163,11 +163,11 @@ body {
 
   .forms-wrapper {
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .new-note-form {
-    flex-basis: 100%;
-    justify-content: center;
+    flex-basis: 80%;
   }
 
   .search-form {
@@ -246,6 +246,10 @@ body {
 
   .note {
     justify-self: center;
+  }
+
+  .new-note-form {
+    flex-basis: 100%;
   }
 
   .new-note-name {

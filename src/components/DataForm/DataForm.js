@@ -71,7 +71,7 @@ export const DataForm = ({
           </div>
         ) : (
           <p className={isPhotoValid ? 'warn-text' : 'warn-text required'}>
-            Photo is required
+            Photo&nbsp;is&nbsp;required
           </p>
         )}
       </div>

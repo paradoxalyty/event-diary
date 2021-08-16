@@ -119,3 +119,7 @@ button.clear-filters-btn {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.empty {
+  text-align: center;
+}

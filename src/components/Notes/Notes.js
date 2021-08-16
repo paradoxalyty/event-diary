@@ -64,36 +64,34 @@ const Notes = ({
     openModal();
   };
 
-  return (
+  return notes.length ? (
     <div className='notes'>
-      {notes.length ? (
-        notes.map((note, index) => (
-          <div key={index} id={note.id} className='note' onClick={handleClick}>
-            <img
-              className='note-img'
-              width='100%'
-              height='100%'
-              alt={note.imgData.imgAuthor}
-              src={note.imgData.imgUrl}
-              data-srclarge={note.imgData.imgSrcLarge}
-            />
+      {notes.map((note, index) => (
+        <div key={index} id={note.id} className='note' onClick={handleClick}>
+          <img
+            className='note-img'
+            width='100%'
+            height='100%'
+            alt={note.imgData.imgAuthor}
+            src={note.imgData.imgUrl}
+            data-srclarge={note.imgData.imgSrcLarge}
+          />
 
-            {note.mood ? <span className='note-mood'>{note.mood}</span> : ''}
-            <span className='note-delete' onClick={deleteNote}></span>
+          {note.mood ? <span className='note-mood'>{note.mood}</span> : ''}
+          <span className='note-delete' onClick={deleteNote}></span>
 
-            <div className='info-box'>
-              <span className='info-titel'>{note.name}</span>
-              <span className='info-date'>{note.date}</span>
-              <p className='info-description'>{note.description}</p>
-            </div>
+          <div className='info-box'>
+            <span className='info-titel'>{note.name}</span>
+            <span className='info-date'>{note.date}</span>
+            <p className='info-description'>{note.description}</p>
           </div>
-        ))
-      ) : (
-        <div className='empty'>Nothing is found.</div>
-      )}
+        </div>
+      ))}
 
       <Modal></Modal>
     </div>
+  ) : (
+    <div className='empty'>Nothing is found.</div>
   );
 };
 
