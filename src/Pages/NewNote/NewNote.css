@@ -117,6 +117,10 @@
   overflow: hidden;
 }
 
+.new-note-photo-wrapper:last-child {
+  margin: 0 0 40px 0;
+}
+
 .new-note-photo {
   display: block;
   width: 100%;
@@ -131,4 +135,25 @@
 
 .new-note-photo:active {
   opacity: 0.5;
+}
+
+/* ---------------- Pagination ---------------- */
+
+.pagination {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: space-evenly;
+  margin: 0 0 16px 0;
+}
+
+.pagination > .pagination-btn {
+  padding: 0;
+}
+
+.prev-page-btn {
+  background: radial-gradient(100% 100% at 100% 100%, #ffce89 80%, #adce74 100%);
+}
+
+.next-page-btn {
+  background: radial-gradient(100% 100% at 0% 0%, #ffce89 80%, #adce74 100%);
 }

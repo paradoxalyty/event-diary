@@ -1,10 +1,12 @@
-import React from 'react';
+import Pagination from '../Pagination/Pagination';
 
-export const FetchedImages = ({ images, handleOnImgClick }) => {
+export const FetchedImages = ({ fetchedImages, handleImgClick }) => {
   return (
     <>
-      {images &&
-        images.map((image) => (
+      {fetchedImages.length ? <Pagination /> : <></>}
+
+      {fetchedImages &&
+        fetchedImages.map((image) => (
           <div className='new-note-photo-wrapper' key={image.id}>
             <img
               data-id={image.id}
@@ -14,10 +16,12 @@ export const FetchedImages = ({ images, handleOnImgClick }) => {
               width='100%'
               height='100%'
               alt={`Provided by Pexels, photographer - ${image.photographer}`}
-              onClick={handleOnImgClick}
+              onClick={handleImgClick}
             />
           </div>
         ))}
+
+      {fetchedImages.length ? <Pagination /> : <></>}
     </>
   );
 };

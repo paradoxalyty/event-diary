@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 
 import {
@@ -10,7 +9,7 @@ import {
   validateName,
   validatePhoto,
   clearFormData,
-  addSearchValue,
+  changeSearchValue,
   saveToLocalStorage,
 } from '../../redux/actions';
 
@@ -20,7 +19,7 @@ import {
   NEW_DATE,
   NEW_DESCRIPTION,
   CLEAR_FORM,
-  NEW_SEARCH_VALUE,
+  CHANGE_SEARCH_VALUE,
 } from '../../redux/constants';
 
 import { Header } from '../../components/Header/Header';
@@ -48,7 +47,7 @@ const NewNote = ({
   validateName,
   validatePhoto,
   clearFormData,
-  addSearchValue,
+  changeSearchValue,
   saveToLocalStorage,
 }) => {
   const handleChange = (event) => {
@@ -69,8 +68,8 @@ const NewNote = ({
         return addNewDescription(targetValue);
       case CLEAR_FORM:
         return clearFormData();
-      case NEW_SEARCH_VALUE:
-        return addSearchValue(targetValue.trimStart());
+      case CHANGE_SEARCH_VALUE:
+        return changeSearchValue(targetValue.trimStart());
       default:
       // ignore default
     }
@@ -82,7 +81,7 @@ const NewNote = ({
     return parseInt(arr[1]);
   };
 
-  const handleOnImgClick = (event) => {
+  const handleImgClick = (event) => {
     event.preventDefault();
 
     addNewImgData({
@@ -137,7 +136,7 @@ const NewNote = ({
           isNameValid={isNameValid}
           isPhotoValid={isPhotoValid}
         />
-        <PhotoForm handleChange={handleChange} handleOnImgClick={handleOnImgClick} />
+        <PhotoForm handleChange={handleChange} handleImgClick={handleImgClick} />
       </div>
     </>
   );
@@ -167,7 +166,7 @@ const mapDispatchToProps = {
   validateName,
   validatePhoto,
   clearFormData,
-  addSearchValue,
+  changeSearchValue,
   saveToLocalStorage,
 };
 

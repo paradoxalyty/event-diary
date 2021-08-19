@@ -4,17 +4,18 @@ import { Loader } from '../Loader/Loader';
 import { FetchedImages } from '../FetchedImages/FetchedImages';
 
 import { fetchImages, loadFromLocalStorage } from '../../redux/actions';
-import { NEW_SEARCH_VALUE } from '../../redux/constants';
+import { CHANGE_SEARCH_VALUE } from '../../redux/constants';
 
 const PhotoForm = ({
   loading,
-  images,
+  fetchedImages,
   fetchImages,
   loadFromLocalStorage,
   handleChange,
-  handleOnImgClick,
+  handleImgClick,
   searchQuery,
   searchValue,
+  currentPage,
   localNotes,
 }) => {
   useEffect(() => {
@@ -22,21 +23,23 @@ const PhotoForm = ({
       loadFromLocalStorage();
     }
 
-    if (searchValue.length === 0) {
-      fetchImages(searchQuery);
+    if (searchValue.length === 0 && fetchedImages.length === 0) {
+      fetchImages(searchQuery, currentPage);
     }
   }, [
     localNotes.length,
     searchValue.length,
     loadFromLocalStorage,
     fetchImages,
+    fetchedImages.length,
     searchQuery,
+    currentPage,
   ]);
 
-  const onSearchClick = (event) => {
+  const handleSearchClick = (event) => {
     event.preventDefault();
     if (searchValue.length) {
-      fetchImages(searchValue);
+      fetchImages(searchValue, 1);
     }
   };
 
@@ -45,20 +48,19 @@ const PhotoForm = ({
       <input
         className='new-note-search input-common-styles'
         type='text'
-        name={NEW_SEARCH_VALUE}
+        name={CHANGE_SEARCH_VALUE}
         value={searchValue}
         placeholder='Search'
         onChange={handleChange}
         autoComplete='off'
-        required
       />
 
-      <button className='search-btn' onClick={onSearchClick}></button>
+      <button className='search-btn' onClick={handleSearchClick}></button>
 
       <div className='new-note-photos'>
         {loading ? <Loader /> : <div className='loader'></div>}
 
-        <FetchedImages images={images} handleOnImgClick={handleOnImgClick} />
+        <FetchedImages fetchedImages={fetchedImages} handleImgClick={handleImgClick} />
       </div>
     </form>
   );
@@ -71,9 +73,10 @@ const mapStateToProps = (state) => {
     imgId: state.newNote.imgId,
 
     loading: state.fetchImages.loading,
-    images: state.fetchImages.fetchedImages,
+    fetchedImages: state.fetchImages.fetchedImages,
     searchQuery: state.fetchImages.searchQuery,
     searchValue: state.fetchImages.searchValue,
+    currentPage: state.fetchImages.currentPage,
 
     localNotes: state.localData.localNotes,
   };

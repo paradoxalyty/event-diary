@@ -8,7 +8,7 @@ import {
   VALIDATE_NAME,
   VALIDATE_PHOTO,
   CLEAR_FORM,
-  NEW_SEARCH_VALUE,
+  CHANGE_SEARCH_VALUE,
   FETCH_IMAGES_STARTED,
   FETCH_IMAGES_SUCCESS,
   FETCH_IMAGES_FAILURE,
@@ -55,9 +55,9 @@ export const clearFormData = () => {
   return { type: CLEAR_FORM };
 };
 
-export const addSearchValue = (payload) => {
+export const changeSearchValue = (payload) => {
   return {
-    type: NEW_SEARCH_VALUE,
+    type: CHANGE_SEARCH_VALUE,
     payload,
   };
 };
@@ -74,24 +74,63 @@ const requestImagesError = (error) => {
   return { type: FETCH_IMAGES_FAILURE, payload: error };
 };
 
-export const fetchImages = (searchQuery) => {
-  const API_URL = `https://api.pexels.com/v1/search?query=${searchQuery}&orientation=landscape&page_1&per_page=20`;
-
+export const fetchImages = (searchQuery, currentPage) => {
   return async (dispatch) => {
     try {
       dispatch(requestImages());
 
-      const responce = await fetch(API_URL, {
-        headers: {
-          Authorization: API_KEY,
-        },
-      });
-      const data = await responce.json();
-      dispatch(requestImagesSuccess(data));
+      const url = getUrl(searchQuery, currentPage);
+      const imagesWithMeta = await loadImages(url);
+
+      dispatch(requestImagesSuccess(imagesWithMeta));
     } catch (error) {
       console.warn(error);
       dispatch(requestImagesError(error));
     }
+  };
+};
+
+const getUrl = (searchQuery, currentPage) => {
+  return `https://api.pexels.com/v1/search?query=${searchQuery}&orientation=landscape&page=${currentPage}&per_page=10`;
+};
+
+const getData = async (url) => {
+  const responce = await fetch(url, {
+    headers: { Authorization: API_KEY },
+  });
+  return responce.json();
+};
+
+const loadImages = async (url) => {
+  const data = await getData(url);
+  return converseData(data);
+};
+
+const converseData = (data) => {
+  // const fetchedImages = data.photos;
+  // const currentPage = data.page;
+  // const totalResult = data.total_results;
+  const { photos: fetchedImages, page: currentPage, total_results: totalResult } = data;
+
+  const totalPages = parseInt(totalResult / 10);
+
+  let prevPage = currentPage - 1;
+  let nextPage = currentPage + 1;
+
+  if (currentPage === 1) {
+    prevPage = totalPages;
+  }
+
+  if (currentPage === totalPages) {
+    nextPage = 1;
+  }
+
+  return {
+    fetchedImages,
+    currentPage,
+    prevPage,
+    nextPage,
+    totalPages,
   };
 };
 

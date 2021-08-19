@@ -2,7 +2,7 @@ import {
   FETCH_IMAGES_STARTED,
   FETCH_IMAGES_SUCCESS,
   FETCH_IMAGES_FAILURE,
-  NEW_SEARCH_VALUE,
+  CHANGE_SEARCH_VALUE,
 } from './constants';
 
 const initialState = {
@@ -11,10 +11,19 @@ const initialState = {
   error: false,
   searchQuery: 'landscape',
   searchValue: '',
+  currentPage: 1,
+  prevPage: null,
+  nextPage: null,
+  totalPages: null,
 };
 
 export const fetchImagesReducer = (state = initialState, action) => {
   switch (action.type) {
+    case CHANGE_SEARCH_VALUE:
+      return {
+        ...state,
+        searchValue: action.payload,
+      };
     case FETCH_IMAGES_STARTED:
       return {
         ...state,
@@ -22,10 +31,13 @@ export const fetchImagesReducer = (state = initialState, action) => {
         error: false,
       };
     case FETCH_IMAGES_SUCCESS:
-      const fetchedImages = action.payload.photos;
       return {
         ...state,
-        fetchedImages,
+        fetchedImages: action.payload.fetchedImages,
+        currentPage: action.payload.currentPage,
+        prevPage: action.payload.prevPage,
+        nextPage: action.payload.nextPage,
+        totalPages: action.payload.totalPages,
         loading: false,
         error: false,
       };
@@ -34,11 +46,6 @@ export const fetchImagesReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: true,
-      };
-    case NEW_SEARCH_VALUE:
-      return {
-        ...state,
-        searchValue: action.payload,
       };
     default:
       return state;
