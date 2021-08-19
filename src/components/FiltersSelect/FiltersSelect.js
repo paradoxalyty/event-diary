@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { MOODS, NEW_MOOD } from '../../redux/constants';
 import { addFilterMood } from '../../redux/actions';

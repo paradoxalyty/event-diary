@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Loader } from '../Loader/Loader';
 import { FetchedImages } from '../FetchedImages/FetchedImages';

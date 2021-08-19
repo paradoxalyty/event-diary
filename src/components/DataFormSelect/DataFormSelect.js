@@ -1,4 +1,3 @@
-import React from 'react';
 import { MOODS, NEW_MOOD } from '../../redux/constants';
 
 export const DataFormSelect = ({ handleChange }) => {
