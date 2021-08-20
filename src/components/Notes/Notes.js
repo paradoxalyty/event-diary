@@ -1,29 +1,16 @@
-import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Modal from '../Modal/Modal';
 
-import {
-  loadFromLocalStorage,
-  deleteFromLocalNotes,
-  openModal,
-  addModalData,
-} from '../../redux/actions';
+import { deleteFromLocalNotes, openModal, addModalData } from '../../redux/actions';
 
 const Notes = ({
   localNotes,
   filterName,
   filterMood,
-  loadFromLocalStorage,
   deleteFromLocalNotes,
   openModal,
   addModalData,
 }) => {
-  useEffect(() => {
-    if (localNotes.length === 0) {
-      loadFromLocalStorage();
-    }
-  }, [localNotes.length, loadFromLocalStorage]);
-
   const filteredNotes = localNotes
     .filter((note) => note.name.toLowerCase().includes(filterName.toLowerCase()))
     .filter((note) => note.mood.includes(filterMood));
@@ -64,34 +51,40 @@ const Notes = ({
     openModal();
   };
 
-  return notes.length ? (
-    <div className='notes'>
-      {notes.map((note, index) => (
-        <div key={index} id={note.id} className='note' onClick={handleClick}>
-          <img
-            className='note-img'
-            width='100%'
-            height='100%'
-            alt={note.imgData.imgAuthor}
-            src={note.imgData.imgUrl}
-            data-srclarge={note.imgData.imgSrcLarge}
-          />
+  return (
+    <>
+      {!filteredNotes.length && localNotes.length ? (
+        <div className='not-found'>Nothing is found.</div>
+      ) : (
+        <></>
+      )}
 
-          {note.mood ? <span className='note-mood'>{note.mood}</span> : ''}
-          <span className='note-delete' onClick={deleteNote}></span>
+      <div className='notes'>
+        {notes.map((note, index) => (
+          <div key={index} id={note.id} className='note' onClick={handleClick}>
+            <img
+              className='note-img'
+              width='100%'
+              height='100%'
+              alt={note.imgData.imgAuthor}
+              src={note.imgData.imgUrl}
+              data-srclarge={note.imgData.imgSrcLarge}
+            />
 
-          <div className='info-box'>
-            <span className='info-titel'>{note.name}</span>
-            <span className='info-date'>{note.date}</span>
-            <p className='info-description'>{note.description}</p>
+            {note.mood ? <span className='note-mood'>{note.mood}</span> : ''}
+            <span className='note-delete' onClick={deleteNote}></span>
+
+            <div className='info-box'>
+              <span className='info-titel'>{note.name}</span>
+              <span className='info-date'>{note.date}</span>
+              <p className='info-description'>{note.description}</p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
 
-      <Modal></Modal>
-    </div>
-  ) : (
-    <div className='empty'>Nothing is found.</div>
+        <Modal></Modal>
+      </div>
+    </>
   );
 };
 
@@ -104,7 +97,6 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  loadFromLocalStorage,
   deleteFromLocalNotes,
   openModal,
   addModalData,

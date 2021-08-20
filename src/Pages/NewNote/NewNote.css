@@ -109,7 +109,7 @@
   justify-content: space-between;
 }
 
-.not-found {
+.new-note-photos > .not-found {
   flex-basis: 100%;
   text-align: center;
 }

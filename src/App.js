@@ -1,7 +1,7 @@
 // import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { HashRouter, Route } from 'react-router-dom';
 
-import { Main } from './Pages/Main/Main';
+import Main from './Pages/Main/Main';
 import NewNote from './Pages/NewNote/NewNote';
 import './App.css';
 

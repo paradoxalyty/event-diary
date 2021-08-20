@@ -120,6 +120,12 @@ button.clear-filters-btn {
   text-overflow: ellipsis;
 }
 
-.empty {
+.not-found {
   text-align: center;
+}
+
+.explanation {
+  text-align: center;
+  padding: 50px 0 0 0;
+  line-height: 30px;
 }
