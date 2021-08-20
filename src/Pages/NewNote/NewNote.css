@@ -109,6 +109,18 @@
   justify-content: space-between;
 }
 
+.not-found {
+  flex-basis: 100%;
+  text-align: center;
+}
+
+.error-message {
+  flex-basis: 100%;
+  text-align: center;
+  color: red;
+  font-size: 25px;
+}
+
 .new-note-photo-wrapper {
   flex-basis: 49%;
   margin-bottom: 16px;

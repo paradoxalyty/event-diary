@@ -7,15 +7,18 @@ import { fetchImages, loadFromLocalStorage } from '../../redux/actions';
 import { CHANGE_SEARCH_VALUE } from '../../redux/constants';
 
 const PhotoForm = ({
-  loading,
+  isFetched,
   fetchedImages,
+  loading,
+  error,
+  errorMessage,
+  searchQuery,
+  searchValue,
+  currentPage,
   fetchImages,
   loadFromLocalStorage,
   handleChange,
   handleImgClick,
-  searchQuery,
-  searchValue,
-  currentPage,
   localNotes,
 }) => {
   useEffect(() => {
@@ -60,7 +63,17 @@ const PhotoForm = ({
       <div className='new-note-photos'>
         {loading ? <Loader /> : <div className='loader'></div>}
 
-        <FetchedImages fetchedImages={fetchedImages} handleImgClick={handleImgClick} />
+        {searchValue.length && !fetchedImages.length ? (
+          <div className='not-found'>Nothing is found.</div>
+        ) : (
+          <></>
+        )}
+
+        {error && <div className='error-message'>{errorMessage}</div>}
+
+        {isFetched && (
+          <FetchedImages fetchedImages={fetchedImages} handleImgClick={handleImgClick} />
+        )}
       </div>
     </form>
   );
@@ -72,8 +85,11 @@ const mapStateToProps = (state) => {
     imgAuthor: state.newNote.imgAuthor,
     imgId: state.newNote.imgId,
 
-    loading: state.fetchImages.loading,
+    isFetched: state.fetchImages.isFetched,
     fetchedImages: state.fetchImages.fetchedImages,
+    loading: state.fetchImages.loading,
+    error: state.fetchImages.error,
+    errorMessage: state.fetchImages.errorMessage,
     searchQuery: state.fetchImages.searchQuery,
     searchValue: state.fetchImages.searchValue,
     currentPage: state.fetchImages.currentPage,

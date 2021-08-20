@@ -6,9 +6,11 @@ import {
 } from './constants';
 
 const initialState = {
+  isFetched: false,
   fetchedImages: [],
   loading: false,
   error: false,
+  errorMessage: 'Something went wrong',
   searchQuery: 'landscape',
   searchValue: '',
   currentPage: 1,
@@ -33,13 +35,14 @@ export const fetchImagesReducer = (state = initialState, action) => {
     case FETCH_IMAGES_SUCCESS:
       return {
         ...state,
+        isFetched: action.payload.isFetched,
         fetchedImages: action.payload.fetchedImages,
+        loading: false,
+        error: false,
         currentPage: action.payload.currentPage,
         prevPage: action.payload.prevPage,
         nextPage: action.payload.nextPage,
         totalPages: action.payload.totalPages,
-        loading: false,
-        error: false,
       };
     case FETCH_IMAGES_FAILURE:
       return {

@@ -125,7 +125,13 @@ const converseData = (data) => {
     nextPage = 1;
   }
 
+  let isFetched = false;
+  if (fetchedImages.length) {
+    isFetched = true;
+  }
+
   return {
+    isFetched,
     fetchedImages,
     currentPage,
     prevPage,
