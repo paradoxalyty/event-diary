@@ -3,6 +3,7 @@ import { NEW_NAME, NEW_DATE, NEW_DESCRIPTION, CLEAR_FORM } from '../../redux/con
 
 export const DataForm = ({
   name,
+  mood,
   date,
   description,
   imgUrl,
@@ -29,7 +30,7 @@ export const DataForm = ({
         autoComplete='off'
       />
 
-      <DataFormSelect handleChange={handleChange} />
+      <DataFormSelect mood={mood} handleChange={handleChange} />
 
       <input
         className='new-note-date input-common-styles'

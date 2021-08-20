@@ -31,6 +31,7 @@ import './NewNote.css';
 const NewNote = ({
   name,
   mood,
+  defaultMood,
   date,
   description,
   imgUrl,
@@ -128,6 +129,8 @@ const NewNote = ({
           handleFormSubmit={handleFormSubmit}
           handleChange={handleChange}
           name={name}
+          mood={mood}
+          defaultMood={defaultMood}
           date={date}
           description={description}
           imgUrl={imgUrl}
@@ -146,6 +149,7 @@ const mapStateToProps = (state) => {
   return {
     name: state.newNote.name,
     mood: state.newNote.mood,
+    defaultMood: state.newNote.defaultMood,
     date: state.newNote.date,
     description: state.newNote.description,
     imgUrl: state.newNote.imgData.imgUrl,
